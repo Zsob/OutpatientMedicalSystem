@@ -78,6 +78,7 @@
             this.btn_LogIn.TabIndex = 4;
             this.btn_LogIn.Text = "登陆";
             this.btn_LogIn.UseVisualStyleBackColor = true;
+            this.btn_LogIn.Click += new System.EventHandler(this.btn_LogIn_Click);
             // 
             // btn_SignUp
             // 

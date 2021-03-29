@@ -28,47 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.grb_User = new System.Windows.Forms.GroupBox();
+            this.grb_Docter = new System.Windows.Forms.GroupBox();
+            this.txb_Message = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // grb_User
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1152, 28);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.grb_User.Location = new System.Drawing.Point(0, 38);
+            this.grb_User.Name = "grb_User";
+            this.grb_User.Size = new System.Drawing.Size(543, 602);
+            this.grb_User.TabIndex = 0;
+            this.grb_User.TabStop = false;
+            this.grb_User.Text = "用户";
             // 
-            // toolStripMenuItem1
+            // grb_Docter
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 24);
-            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            this.grb_Docter.Location = new System.Drawing.Point(577, 38);
+            this.grb_Docter.Name = "grb_Docter";
+            this.grb_Docter.Size = new System.Drawing.Size(543, 602);
+            this.grb_Docter.TabIndex = 1;
+            this.grb_Docter.TabStop = false;
+            this.grb_Docter.Text = "医师";
             // 
-            // toolStripMenuItem2
+            // txb_Message
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(170, 24);
-            this.toolStripMenuItem2.Text = "toolStripMenuItem2";
+            this.txb_Message.Enabled = false;
+            this.txb_Message.Location = new System.Drawing.Point(13, 7);
+            this.txb_Message.Name = "txb_Message";
+            this.txb_Message.Size = new System.Drawing.Size(146, 25);
+            this.txb_Message.TabIndex = 2;
+            this.txb_Message.Text = "未登陆";
+            this.txb_Message.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(191, 8);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 33);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "用户登录";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(284, 7);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(89, 33);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "医师登录";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // OutpatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1152, 643);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txb_Message);
+            this.Controls.Add(this.grb_Docter);
+            this.Controls.Add(this.grb_User);
             this.Name = "OutpatientForm";
             this.Text = "医院门诊系统";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -76,9 +101,11 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.GroupBox grb_User;
+        private System.Windows.Forms.GroupBox grb_Docter;
+        private System.Windows.Forms.TextBox txb_Message;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
