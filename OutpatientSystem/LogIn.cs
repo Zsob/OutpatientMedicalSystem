@@ -48,7 +48,10 @@ namespace OutpatientSystem
             sqlConnection.Close();                                                          
             if (rowCount == 1)                                                              
             {
-                MessageBox.Show("登录成功。");											
+                MessageBox.Show("登录成功。");
+                OutpatientForm outpatientForm = new OutpatientForm();
+                outpatientForm.Show();
+                Close();
             }
             else                                                                            
             {
@@ -62,7 +65,14 @@ namespace OutpatientSystem
         private void btn_SignUp_Click(object sender, EventArgs e)
         {
             SignUp signUp = new SignUp();
+            signUp.FormClosed += SignUp_FormClosed;
+            this.Hide();
             signUp.Show();
+        }
+
+        private void SignUp_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
     }
 }

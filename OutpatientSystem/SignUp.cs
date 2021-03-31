@@ -54,8 +54,9 @@ namespace OutpatientSystem
             SqlConnection sqlConnection = new SqlConnection();
             sqlConnection.ConnectionString = ConfigurationManager.ConnectionStrings["Sql"].ConnectionString;
             SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = sqlConnection;
             sqlCommand.CommandText=
-                "INSERT dbo.tb_User(ID,Password,Name,Gender,Phone) VALUES('@ID', HASHBYTES('MD5',@Password), '@Name', '@Gender', '@Phone')";
+                "INSERT tb_User(ID,Password,Name,Gender,Phone) VALUES(@ID, HASHBYTES('MD5',@Password), @Name, @Gender , @Phone)";
             sqlCommand.Parameters.AddWithValue("@ID", this.txb_ID.Text.Trim());                    
             sqlCommand.Parameters.AddWithValue("@Password", this.txb_Password.Text.Trim());
             sqlCommand.Parameters["@Password"].SqlDbType = SqlDbType.VarChar;
@@ -63,11 +64,11 @@ namespace OutpatientSystem
             sqlCommand.Parameters.AddWithValue("@Phone", txb_Phone.Text);
             if (rdb_Female.Checked)
             {
-                sqlCommand.Parameters.AddWithValue("@Gender", "女");
+                sqlCommand.Parameters.AddWithValue("@Gender", '女');
             }
             else
             {
-                sqlCommand.Parameters.AddWithValue("@Gender", "男");
+                sqlCommand.Parameters.AddWithValue("@Gender", '男');
             }
 
             int rowAffected = 0;                                                                        
