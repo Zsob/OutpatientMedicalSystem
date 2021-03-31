@@ -72,7 +72,7 @@
             // 
             // btn_LogIn
             // 
-            this.btn_LogIn.Location = new System.Drawing.Point(81, 205);
+            this.btn_LogIn.Location = new System.Drawing.Point(98, 205);
             this.btn_LogIn.Name = "btn_LogIn";
             this.btn_LogIn.Size = new System.Drawing.Size(84, 30);
             this.btn_LogIn.TabIndex = 4;
@@ -82,12 +82,13 @@
             // 
             // btn_SignUp
             // 
-            this.btn_SignUp.Location = new System.Drawing.Point(81, 254);
+            this.btn_SignUp.Location = new System.Drawing.Point(98, 255);
             this.btn_SignUp.Name = "btn_SignUp";
             this.btn_SignUp.Size = new System.Drawing.Size(84, 30);
             this.btn_SignUp.TabIndex = 5;
             this.btn_SignUp.Text = "注册";
             this.btn_SignUp.UseVisualStyleBackColor = true;
+            this.btn_SignUp.Click += new System.EventHandler(this.btn_SignUp_Click);
             // 
             // LogIn
             // 

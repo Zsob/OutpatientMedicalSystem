@@ -58,5 +58,11 @@ namespace OutpatientSystem
             }
 
         }
+
+        private void btn_SignUp_Click(object sender, EventArgs e)
+        {
+            SignUp signUp = new SignUp();
+            signUp.Show();
+        }
     }
 }
