@@ -207,16 +207,17 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "账号：";
             // 
-            // Choose
+            // frm_LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1080, 616);
             this.Controls.Add(this.gpb_Docter);
             this.Controls.Add(this.gpb_User);
             this.Controls.Add(this.btn_Docter);
             this.Controls.Add(this.btn_User);
-            this.Name = "Choose";
+            this.Name = "frm_LogIn";
             this.Text = "登陆";
             this.gpb_User.ResumeLayout(false);
             this.gpb_User.PerformLayout();

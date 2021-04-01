@@ -47,6 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frm_Appointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Appointment.Designer.cs">
+      <DependentUpon>frm_Appointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Doctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Doctor.Designer.cs">
+      <DependentUpon>frm_Doctor.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +79,12 @@
     <Compile Include="SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frm_Appointment.resx">
+      <DependentUpon>frm_Appointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Doctor.resx">
+      <DependentUpon>frm_Doctor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_LogIn.resx">
       <DependentUpon>frm_LogIn.cs</DependentUpon>
     </EmbeddedResource>

@@ -29,28 +29,21 @@
         private void InitializeComponent()
         {
             this.grb_User = new System.Windows.Forms.GroupBox();
-            this.grb_Docter = new System.Windows.Forms.GroupBox();
             this.txb_Message = new System.Windows.Forms.TextBox();
             this.btn_Logout = new System.Windows.Forms.Button();
+            this.btn_Appointment = new System.Windows.Forms.Button();
+            this.grb_User.SuspendLayout();
             this.SuspendLayout();
             // 
             // grb_User
             // 
-            this.grb_User.Location = new System.Drawing.Point(0, 38);
+            this.grb_User.Controls.Add(this.btn_Appointment);
+            this.grb_User.Location = new System.Drawing.Point(0, 47);
             this.grb_User.Name = "grb_User";
-            this.grb_User.Size = new System.Drawing.Size(543, 602);
+            this.grb_User.Size = new System.Drawing.Size(1140, 562);
             this.grb_User.TabIndex = 0;
             this.grb_User.TabStop = false;
             this.grb_User.Text = "用户";
-            // 
-            // grb_Docter
-            // 
-            this.grb_Docter.Location = new System.Drawing.Point(577, 38);
-            this.grb_Docter.Name = "grb_Docter";
-            this.grb_Docter.Size = new System.Drawing.Size(543, 602);
-            this.grb_Docter.TabIndex = 1;
-            this.grb_Docter.TabStop = false;
-            this.grb_Docter.Text = "医师";
             // 
             // txb_Message
             // 
@@ -72,17 +65,27 @@
             this.btn_Logout.UseVisualStyleBackColor = true;
             this.btn_Logout.Click += new System.EventHandler(this.btn_Logout_Click);
             // 
-            // OutpatientForm
+            // btn_Appointment
+            // 
+            this.btn_Appointment.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Appointment.Location = new System.Drawing.Point(114, 61);
+            this.btn_Appointment.Name = "btn_Appointment";
+            this.btn_Appointment.Size = new System.Drawing.Size(171, 102);
+            this.btn_Appointment.TabIndex = 0;
+            this.btn_Appointment.Text = "预约挂号";
+            this.btn_Appointment.UseVisualStyleBackColor = true;
+            // 
+            // frm_OutpatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1152, 643);
             this.Controls.Add(this.btn_Logout);
             this.Controls.Add(this.txb_Message);
-            this.Controls.Add(this.grb_Docter);
             this.Controls.Add(this.grb_User);
-            this.Name = "OutpatientForm";
+            this.Name = "frm_OutpatientForm";
             this.Text = "医院门诊系统";
+            this.grb_User.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -91,9 +94,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grb_User;
-        private System.Windows.Forms.GroupBox grb_Docter;
         private System.Windows.Forms.TextBox txb_Message;
         private System.Windows.Forms.Button btn_Logout;
+        private System.Windows.Forms.Button btn_Appointment;
     }
 }
 
