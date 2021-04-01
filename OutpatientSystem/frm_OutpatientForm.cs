@@ -10,19 +10,21 @@ using System.Windows.Forms;
 
 namespace OutpatientSystem
 {
-    public partial class Choose : Form
+    public partial class frm_OutpatientForm : Form
     {
-        public Choose()
+        public frm_OutpatientForm()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
         }
-
-        private void btn_User_Click(object sender, EventArgs e)
+        public frm_OutpatientForm(string No):this()
         {
-            LogIn logIn = new LogIn();
-            logIn.Show();
-            Hide();
+            txb_Message.Text = No;
+        }
+
+        private void btn_Logout_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -90,7 +90,8 @@ namespace OutpatientSystem
             }
             if (rowAffected == 1)                                                                      
             {
-                MessageBox.Show("注册成功。");															
+                MessageBox.Show("注册成功。");
+                Close();
             }
             else                                                                                       
             {

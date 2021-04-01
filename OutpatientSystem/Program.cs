@@ -16,7 +16,8 @@ namespace OutpatientSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Choose());
+            frm_LogIn choose = new frm_LogIn();
+            Application.Run(choose);
         }
     }
 }
