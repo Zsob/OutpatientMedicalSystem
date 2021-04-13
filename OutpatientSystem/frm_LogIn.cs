@@ -77,7 +77,7 @@ namespace OutpatientSystem
 
         private void btn_SignUp_Click(object sender, EventArgs e)
         {
-            SignUp signUp = new SignUp();
+            frm_SignUp signUp = new frm_SignUp();
             signUp.FormClosed += SignUp_FormClosed;
             this.Hide();
             signUp.Show();

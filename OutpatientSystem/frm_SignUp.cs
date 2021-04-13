@@ -12,9 +12,9 @@ using System.Data.SqlClient;
 
 namespace OutpatientSystem
 {
-    public partial class SignUp : Form
+    public partial class frm_SignUp : Form
     {
-        public SignUp()
+        public frm_SignUp()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;

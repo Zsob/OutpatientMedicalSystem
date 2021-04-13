@@ -1,6 +1,6 @@
 ﻿namespace OutpatientSystem
 {
-    partial class SignUp
+    partial class frm_SignUp
     {
         /// <summary>
         /// Required designer variable.

@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             this.grb_User = new System.Windows.Forms.GroupBox();
+            this.btn_Information = new System.Windows.Forms.Button();
+            this.btn_Appointment = new System.Windows.Forms.Button();
             this.txb_Message = new System.Windows.Forms.TextBox();
             this.btn_Logout = new System.Windows.Forms.Button();
-            this.btn_Appointment = new System.Windows.Forms.Button();
             this.grb_User.SuspendLayout();
             this.SuspendLayout();
             // 
             // grb_User
             // 
+            this.grb_User.Controls.Add(this.btn_Information);
             this.grb_User.Controls.Add(this.btn_Appointment);
             this.grb_User.Location = new System.Drawing.Point(0, 47);
             this.grb_User.Name = "grb_User";
@@ -44,6 +46,30 @@
             this.grb_User.TabIndex = 0;
             this.grb_User.TabStop = false;
             this.grb_User.Text = "用户";
+            // 
+            // btn_Information
+            // 
+            this.btn_Information.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Information.Location = new System.Drawing.Point(98, 66);
+            this.btn_Information.Name = "btn_Information";
+            this.btn_Information.Size = new System.Drawing.Size(171, 102);
+            this.btn_Information.TabIndex = 1;
+            this.btn_Information.TabStop = false;
+            this.btn_Information.Text = "个人中心";
+            this.btn_Information.UseVisualStyleBackColor = true;
+            this.btn_Information.Click += new System.EventHandler(this.btn_Information_Click);
+            // 
+            // btn_Appointment
+            // 
+            this.btn_Appointment.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Appointment.Location = new System.Drawing.Point(375, 66);
+            this.btn_Appointment.Name = "btn_Appointment";
+            this.btn_Appointment.Size = new System.Drawing.Size(171, 102);
+            this.btn_Appointment.TabIndex = 0;
+            this.btn_Appointment.TabStop = false;
+            this.btn_Appointment.Text = "预约挂号";
+            this.btn_Appointment.UseVisualStyleBackColor = true;
+            this.btn_Appointment.Click += new System.EventHandler(this.btn_Appointment_Click);
             // 
             // txb_Message
             // 
@@ -64,16 +90,6 @@
             this.btn_Logout.Text = "注销";
             this.btn_Logout.UseVisualStyleBackColor = true;
             this.btn_Logout.Click += new System.EventHandler(this.btn_Logout_Click);
-            // 
-            // btn_Appointment
-            // 
-            this.btn_Appointment.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Appointment.Location = new System.Drawing.Point(114, 61);
-            this.btn_Appointment.Name = "btn_Appointment";
-            this.btn_Appointment.Size = new System.Drawing.Size(171, 102);
-            this.btn_Appointment.TabIndex = 0;
-            this.btn_Appointment.Text = "预约挂号";
-            this.btn_Appointment.UseVisualStyleBackColor = true;
             // 
             // frm_OutpatientForm
             // 
@@ -97,6 +113,7 @@
         private System.Windows.Forms.TextBox txb_Message;
         private System.Windows.Forms.Button btn_Logout;
         private System.Windows.Forms.Button btn_Appointment;
+        private System.Windows.Forms.Button btn_Information;
     }
 }
 

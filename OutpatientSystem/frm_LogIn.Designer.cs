@@ -109,8 +109,10 @@
             // 
             this.txb_Password.Location = new System.Drawing.Point(160, 197);
             this.txb_Password.Name = "txb_Password";
+            this.txb_Password.PasswordChar = '☠';
             this.txb_Password.Size = new System.Drawing.Size(163, 25);
             this.txb_Password.TabIndex = 9;
+            this.txb_Password.Text = "11";
             // 
             // txb_No
             // 
@@ -118,6 +120,7 @@
             this.txb_No.Name = "txb_No";
             this.txb_No.Size = new System.Drawing.Size(163, 25);
             this.txb_No.TabIndex = 8;
+            this.txb_No.Text = "350103200103271518";
             // 
             // lbl_Password
             // 
