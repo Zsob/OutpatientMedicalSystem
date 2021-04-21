@@ -24,7 +24,11 @@ namespace OutpatientSystem
 
         private void btn_Logout_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult result = MessageBox.Show("确定退出", "退出", MessageBoxButtons.YesNo);
+            if (result==DialogResult.Yes)
+            {
+                Close();
+            }
         }
 
         private void btn_Appointment_Click(object sender, EventArgs e)
@@ -46,6 +50,19 @@ namespace OutpatientSystem
             imformation.FormClosed += formClosed;
             Hide();
             imformation.Show();
+        }
+
+        private void btn_Charge_Click(object sender, EventArgs e)
+        {
+            frm_Charge frm_Charge = new frm_Charge(txb_Message.Text);
+            frm_Charge.FormClosed += Frm_Charge_FormClosed;
+            frm_Charge.Show();
+            Hide();
+        }
+
+        private void Frm_Charge_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Show();
         }
     }
 }

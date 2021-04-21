@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grb_User = new System.Windows.Forms.GroupBox();
+            this.btn_Charge = new System.Windows.Forms.Button();
             this.btn_Information = new System.Windows.Forms.Button();
             this.btn_Appointment = new System.Windows.Forms.Button();
             this.txb_Message = new System.Windows.Forms.TextBox();
@@ -38,6 +39,7 @@
             // 
             // grb_User
             // 
+            this.grb_User.Controls.Add(this.btn_Charge);
             this.grb_User.Controls.Add(this.btn_Information);
             this.grb_User.Controls.Add(this.btn_Appointment);
             this.grb_User.Location = new System.Drawing.Point(0, 47);
@@ -47,10 +49,22 @@
             this.grb_User.TabStop = false;
             this.grb_User.Text = "用户";
             // 
+            // btn_Charge
+            // 
+            this.btn_Charge.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Charge.Location = new System.Drawing.Point(575, 96);
+            this.btn_Charge.Name = "btn_Charge";
+            this.btn_Charge.Size = new System.Drawing.Size(171, 102);
+            this.btn_Charge.TabIndex = 2;
+            this.btn_Charge.TabStop = false;
+            this.btn_Charge.Text = "在线充值";
+            this.btn_Charge.UseVisualStyleBackColor = true;
+            this.btn_Charge.Click += new System.EventHandler(this.btn_Charge_Click);
+            // 
             // btn_Information
             // 
             this.btn_Information.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Information.Location = new System.Drawing.Point(98, 66);
+            this.btn_Information.Location = new System.Drawing.Point(27, 96);
             this.btn_Information.Name = "btn_Information";
             this.btn_Information.Size = new System.Drawing.Size(171, 102);
             this.btn_Information.TabIndex = 1;
@@ -62,7 +76,7 @@
             // btn_Appointment
             // 
             this.btn_Appointment.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Appointment.Location = new System.Drawing.Point(375, 66);
+            this.btn_Appointment.Location = new System.Drawing.Point(304, 96);
             this.btn_Appointment.Name = "btn_Appointment";
             this.btn_Appointment.Size = new System.Drawing.Size(171, 102);
             this.btn_Appointment.TabIndex = 0;
@@ -114,6 +128,7 @@
         private System.Windows.Forms.Button btn_Logout;
         private System.Windows.Forms.Button btn_Appointment;
         private System.Windows.Forms.Button btn_Information;
+        private System.Windows.Forms.Button btn_Charge;
     }
 }
 

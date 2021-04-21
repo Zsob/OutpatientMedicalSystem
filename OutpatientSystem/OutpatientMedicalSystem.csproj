@@ -53,11 +53,23 @@
     <Compile Include="frm_Appointment.Designer.cs">
       <DependentUpon>frm_Appointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_Charge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Charge.Designer.cs">
+      <DependentUpon>frm_Charge.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Doctor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_Doctor.Designer.cs">
       <DependentUpon>frm_Doctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Lock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Lock.Designer.cs">
+      <DependentUpon>frm_Lock.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_LogIn.cs">
       <SubType>Form</SubType>
@@ -88,8 +100,14 @@
     <EmbeddedResource Include="frm_Appointment.resx">
       <DependentUpon>frm_Appointment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_Charge.resx">
+      <DependentUpon>frm_Charge.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_Doctor.resx">
       <DependentUpon>frm_Doctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Lock.resx">
+      <DependentUpon>frm_Lock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_LogIn.resx">
       <DependentUpon>frm_LogIn.cs</DependentUpon>

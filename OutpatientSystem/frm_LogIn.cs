@@ -95,5 +95,37 @@ namespace OutpatientSystem
             gpb_User.Visible = !gpb_Docter.Visible;
 
         }
+
+        private void btn_DoctorLogIn_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection = new SqlConnection();
+            sqlConnection.ConnectionString = ConfigurationManager.ConnectionStrings["Sql"].ConnectionString;
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = sqlConnection;
+            sqlCommand.CommandText =
+                $"SELECT COUNT(1) FROM tb_Doctor"
+                + $" WHERE DoctorNo='{this.txb_DoctorID.Text.Trim()}'"
+                + $" AND Password=HASHBYTES('MD5','{this.txb_DoctorPassword.Text.Trim()}');";
+            sqlConnection.Open();
+            int rowCount = (int)sqlCommand.ExecuteScalar();
+
+            sqlConnection.Close();
+            if (rowCount == 1)
+            {
+                MessageBox.Show("登录成功。");
+                txb_No.Text = txb_Password.Text = null;
+                frm_Doctor frm_Doctor = new frm_Doctor(txb_DoctorID.Text);
+                frm_Doctor.FormClosed += SignUp_FormClosed;
+                frm_Doctor.Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("用户号/密码有误，请重新输入！");
+                this.txb_Password.Focus();
+                this.txb_Password.SelectAll();
+            }
+
+        }
     }
 }

@@ -38,10 +38,9 @@
             this.lbl_Password = new System.Windows.Forms.Label();
             this.lbl_No = new System.Windows.Forms.Label();
             this.gpb_Docter = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btn_DoctorLogIn = new System.Windows.Forms.Button();
+            this.txb_DoctorPassword = new System.Windows.Forms.TextBox();
+            this.txb_DoctorID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.gpb_User.SuspendLayout();
@@ -87,6 +86,7 @@
             // 
             // btn_SignUp
             // 
+            this.btn_SignUp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_SignUp.Location = new System.Drawing.Point(160, 315);
             this.btn_SignUp.Name = "btn_SignUp";
             this.btn_SignUp.Size = new System.Drawing.Size(84, 30);
@@ -97,6 +97,7 @@
             // 
             // btn_LogIn
             // 
+            this.btn_LogIn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_LogIn.Location = new System.Drawing.Point(160, 265);
             this.btn_LogIn.Name = "btn_LogIn";
             this.btn_LogIn.Size = new System.Drawing.Size(84, 30);
@@ -107,18 +108,21 @@
             // 
             // txb_Password
             // 
+            this.txb_Password.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txb_Password.Location = new System.Drawing.Point(160, 197);
             this.txb_Password.Name = "txb_Password";
             this.txb_Password.PasswordChar = '☠';
-            this.txb_Password.Size = new System.Drawing.Size(163, 25);
+            this.txb_Password.Size = new System.Drawing.Size(176, 28);
             this.txb_Password.TabIndex = 9;
             this.txb_Password.Text = "11";
+            this.txb_Password.UseSystemPasswordChar = true;
             // 
             // txb_No
             // 
+            this.txb_No.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txb_No.Location = new System.Drawing.Point(160, 138);
             this.txb_No.Name = "txb_No";
-            this.txb_No.Size = new System.Drawing.Size(163, 25);
+            this.txb_No.Size = new System.Drawing.Size(176, 28);
             this.txb_No.TabIndex = 8;
             this.txb_No.Text = "350103200103271518";
             // 
@@ -144,10 +148,9 @@
             // 
             // gpb_Docter
             // 
-            this.gpb_Docter.Controls.Add(this.button1);
-            this.gpb_Docter.Controls.Add(this.button2);
-            this.gpb_Docter.Controls.Add(this.textBox1);
-            this.gpb_Docter.Controls.Add(this.textBox2);
+            this.gpb_Docter.Controls.Add(this.btn_DoctorLogIn);
+            this.gpb_Docter.Controls.Add(this.txb_DoctorPassword);
+            this.gpb_Docter.Controls.Add(this.txb_DoctorID);
             this.gpb_Docter.Controls.Add(this.label1);
             this.gpb_Docter.Controls.Add(this.label2);
             this.gpb_Docter.Location = new System.Drawing.Point(564, 73);
@@ -158,37 +161,36 @@
             this.gpb_Docter.Text = "医生登陆";
             this.gpb_Docter.Visible = false;
             // 
-            // button1
+            // btn_DoctorLogIn
             // 
-            this.button1.Location = new System.Drawing.Point(160, 315);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 30);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "注册";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_DoctorLogIn.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_DoctorLogIn.Location = new System.Drawing.Point(160, 265);
+            this.btn_DoctorLogIn.Name = "btn_DoctorLogIn";
+            this.btn_DoctorLogIn.Size = new System.Drawing.Size(84, 30);
+            this.btn_DoctorLogIn.TabIndex = 10;
+            this.btn_DoctorLogIn.Text = "登陆";
+            this.btn_DoctorLogIn.UseVisualStyleBackColor = true;
+            this.btn_DoctorLogIn.Click += new System.EventHandler(this.btn_DoctorLogIn_Click);
             // 
-            // button2
+            // txb_DoctorPassword
             // 
-            this.button2.Location = new System.Drawing.Point(160, 265);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 30);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "登陆";
-            this.button2.UseVisualStyleBackColor = true;
+            this.txb_DoctorPassword.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txb_DoctorPassword.Location = new System.Drawing.Point(160, 197);
+            this.txb_DoctorPassword.Name = "txb_DoctorPassword";
+            this.txb_DoctorPassword.PasswordChar = '*';
+            this.txb_DoctorPassword.Size = new System.Drawing.Size(176, 28);
+            this.txb_DoctorPassword.TabIndex = 9;
+            this.txb_DoctorPassword.Text = "1";
+            this.txb_DoctorPassword.UseSystemPasswordChar = true;
             // 
-            // textBox1
+            // txb_DoctorID
             // 
-            this.textBox1.Location = new System.Drawing.Point(160, 197);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(163, 25);
-            this.textBox1.TabIndex = 9;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(160, 138);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(163, 25);
-            this.textBox2.TabIndex = 8;
+            this.txb_DoctorID.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txb_DoctorID.Location = new System.Drawing.Point(160, 138);
+            this.txb_DoctorID.Name = "txb_DoctorID";
+            this.txb_DoctorID.Size = new System.Drawing.Size(176, 28);
+            this.txb_DoctorID.TabIndex = 8;
+            this.txb_DoctorID.Text = "1";
             // 
             // label1
             // 
@@ -242,10 +244,9 @@
         private System.Windows.Forms.Label lbl_Password;
         private System.Windows.Forms.Label lbl_No;
         private System.Windows.Forms.GroupBox gpb_Docter;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btn_DoctorLogIn;
+        private System.Windows.Forms.TextBox txb_DoctorPassword;
+        private System.Windows.Forms.TextBox txb_DoctorID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }

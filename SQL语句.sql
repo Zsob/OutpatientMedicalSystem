@@ -33,7 +33,7 @@ CREATE TABLE tb_User(
 		VARCHAR(20)
 		NOT NULL,
 	Birthday
-		DATETIME
+		DATE
 		NULL,
 	Photo
 		VARBINARY(MAX)
@@ -73,7 +73,7 @@ CREATE TABLE tb_Doctor(
 	Name
 		VARCHAR(10)
 		NOT NULL,
-	Indications
+	IndicationNo
 		INT
 		NOT NULL
 )
@@ -82,7 +82,7 @@ INSERT dbo.tb_Doctor
     DoctorNo,
     Password,
     Name,
-    Indications
+    IndicationNo
 )
 VALUES
 (   '1',   -- DoctorNo - varchar(10)
@@ -132,5 +132,7 @@ CREATE TABLE tb_Order
 		DATETIME
 		NOT NULL
 )
-SELECT * FROM dbo.tb_Order WHERE UserID='' AND DoctorNo=''
-INSERT dbo.tb_Order (DoctorNo,UserID,OrderTime) VALUES (   '','',GETDATE() )
+
+SELECT * FROM dbo.tb_Order
+SELECT * FROM dbo.tb_Doctor 
+SELECT D.Name,I.Indication,O.OrderTime FROM dbo.tb_Order AS O JOIN dbo.tb_Doctor AS D ON D.DoctorNo = O.DoctorNo JOIN dbo.tb_Indications AS I ON I.No=D.Indications WHERE O.UserID=1
