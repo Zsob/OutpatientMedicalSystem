@@ -31,6 +31,8 @@
             this.mns_Doctor = new System.Windows.Forms.MenuStrip();
             this.锁定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.锁定ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.更改操作员口令ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mns_Doctor.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,10 +51,12 @@
             // 
             // 锁定ToolStripMenuItem
             // 
+            this.锁定ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.锁定ToolStripMenuItem1,
+            this.更改操作员口令ToolStripMenuItem});
             this.锁定ToolStripMenuItem.Name = "锁定ToolStripMenuItem";
-            this.锁定ToolStripMenuItem.Size = new System.Drawing.Size(77, 36);
-            this.锁定ToolStripMenuItem.Text = "锁定";
-            this.锁定ToolStripMenuItem.Click += new System.EventHandler(this.锁定ToolStripMenuItem_Click);
+            this.锁定ToolStripMenuItem.Size = new System.Drawing.Size(102, 36);
+            this.锁定ToolStripMenuItem.Text = "控制台";
             // 
             // 退出ToolStripMenuItem
             // 
@@ -60,6 +64,22 @@
             this.退出ToolStripMenuItem.Size = new System.Drawing.Size(77, 36);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
+            // 
+            // 锁定ToolStripMenuItem1
+            // 
+            this.锁定ToolStripMenuItem1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.锁定ToolStripMenuItem1.Name = "锁定ToolStripMenuItem1";
+            this.锁定ToolStripMenuItem1.Size = new System.Drawing.Size(233, 32);
+            this.锁定ToolStripMenuItem1.Text = "锁定";
+            this.锁定ToolStripMenuItem1.Click += new System.EventHandler(this.锁定ToolStripMenuItem1_Click);
+            // 
+            // 更改操作员口令ToolStripMenuItem
+            // 
+            this.更改操作员口令ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.更改操作员口令ToolStripMenuItem.Name = "更改操作员口令ToolStripMenuItem";
+            this.更改操作员口令ToolStripMenuItem.Size = new System.Drawing.Size(233, 32);
+            this.更改操作员口令ToolStripMenuItem.Text = "更改操作员口令";
+            this.更改操作员口令ToolStripMenuItem.Click += new System.EventHandler(this.更改操作员口令ToolStripMenuItem_Click);
             // 
             // frm_Doctor
             // 
@@ -82,5 +102,7 @@
         private System.Windows.Forms.MenuStrip mns_Doctor;
         private System.Windows.Forms.ToolStripMenuItem 锁定ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 锁定ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 更改操作员口令ToolStripMenuItem;
     }
 }

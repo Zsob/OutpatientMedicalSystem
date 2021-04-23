@@ -64,5 +64,13 @@ namespace OutpatientSystem
         {
             Show();
         }
+
+        private void btn_ChangePassword_Click(object sender, EventArgs e)
+        {
+            frm_ChangePassword frm_changePassword = new frm_ChangePassword(txb_Message.Text, 0);
+            frm_changePassword.FormClosed += formClosed;
+            Hide();
+            frm_changePassword.Show();
+        }
     }
 }

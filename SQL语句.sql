@@ -122,17 +122,16 @@ CREATE TABLE tb_Order
 	 PRIMARY KEY,
 	DoctorNo
 		VARCHAR(10)
-		FOREIGN KEY  REFERENCES dbo.tb_Doctor(DoctorNo)
 		NOT NULL,
 	UserID
 		CHAR(18)
-		FOREIGN KEY REFERENCES dbo.tb_User(ID)
 		NOT NULL,
 	OrderTime
 		DATETIME
 		NOT NULL
 )
 
+SELECT *FROM dbo.tb_User
 SELECT * FROM dbo.tb_Order
 SELECT * FROM dbo.tb_Doctor 
 SELECT D.Name,I.Indication,O.OrderTime FROM dbo.tb_Order AS O JOIN dbo.tb_Doctor AS D ON D.DoctorNo = O.DoctorNo JOIN dbo.tb_Indications AS I ON I.No=D.Indications WHERE O.UserID=1

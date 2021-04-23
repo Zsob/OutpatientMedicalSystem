@@ -14,24 +14,13 @@ namespace OutpatientSystem
 {
     public partial class frm_Doctor : Form
     {
-        string doctorNo,Name,IndicationNo;
+        string doctorNo, Name, IndicationNo;
         public frm_Doctor()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
         }
-
-        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("确定退出", "退出", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                Close();
-            }
-
-        }
-
-        public frm_Doctor(string no):this()
+        public frm_Doctor(string no) : this()
         {
             doctorNo = no;
             SqlConnection sqlConnection = new SqlConnection();
@@ -48,10 +37,24 @@ namespace OutpatientSystem
             }
             sqlConnection.Close();
         }
-        private void 锁定ToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void 更改操作员口令ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_ChangePassword frm_ChangePassword = new frm_ChangePassword(doctorNo,1);
+            frm_ChangePassword.FormClosed += FormClose;
+            Hide();
+            frm_ChangePassword.Show();
+        }
+
+        private void FormClose(object sender, FormClosedEventArgs e)
+        {
+            Show();
+        }
+
+        private void 锁定ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Enabled = false;
-            frm_Lock frm_Lock = new frm_Lock(doctorNo,Name);
+            frm_Lock frm_Lock = new frm_Lock(doctorNo, Name);
             if (frm_Lock.ShowDialog() == DialogResult.OK)
             {
                 Enabled = true;
@@ -61,5 +64,17 @@ namespace OutpatientSystem
                 Close();
             }
         }
+
+        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("确定退出", "退出", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                Close();
+            }
+
+        }
+
+
     }
 }

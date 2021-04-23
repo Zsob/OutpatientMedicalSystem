@@ -34,11 +34,13 @@
             this.btn_Appointment = new System.Windows.Forms.Button();
             this.txb_Message = new System.Windows.Forms.TextBox();
             this.btn_Logout = new System.Windows.Forms.Button();
+            this.btn_ChangePassword = new System.Windows.Forms.Button();
             this.grb_User.SuspendLayout();
             this.SuspendLayout();
             // 
             // grb_User
             // 
+            this.grb_User.Controls.Add(this.btn_ChangePassword);
             this.grb_User.Controls.Add(this.btn_Charge);
             this.grb_User.Controls.Add(this.btn_Information);
             this.grb_User.Controls.Add(this.btn_Appointment);
@@ -105,6 +107,18 @@
             this.btn_Logout.UseVisualStyleBackColor = true;
             this.btn_Logout.Click += new System.EventHandler(this.btn_Logout_Click);
             // 
+            // btn_ChangePassword
+            // 
+            this.btn_ChangePassword.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_ChangePassword.Location = new System.Drawing.Point(842, 96);
+            this.btn_ChangePassword.Name = "btn_ChangePassword";
+            this.btn_ChangePassword.Size = new System.Drawing.Size(171, 102);
+            this.btn_ChangePassword.TabIndex = 3;
+            this.btn_ChangePassword.TabStop = false;
+            this.btn_ChangePassword.Text = "密码修改";
+            this.btn_ChangePassword.UseVisualStyleBackColor = true;
+            this.btn_ChangePassword.Click += new System.EventHandler(this.btn_ChangePassword_Click);
+            // 
             // frm_OutpatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -129,6 +143,7 @@
         private System.Windows.Forms.Button btn_Appointment;
         private System.Windows.Forms.Button btn_Information;
         private System.Windows.Forms.Button btn_Charge;
+        private System.Windows.Forms.Button btn_ChangePassword;
     }
 }
 
