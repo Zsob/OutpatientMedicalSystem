@@ -18,6 +18,7 @@ namespace OutpatientSystem
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            dtp_Birthday.MaxDate = DateTime.Now;
         }
 
         private void btn_Submit_Click(object sender, EventArgs e)
@@ -56,12 +57,13 @@ namespace OutpatientSystem
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = sqlConnection;
             sqlCommand.CommandText=
-                "INSERT tb_User(ID,Password,Name,Gender,Phone) VALUES(@ID, HASHBYTES('MD5',@Password), @Name, @Gender , @Phone)";
+                "INSERT tb_User(ID,Password,Name,Gender,Phone,Birthday) VALUES(@ID, HASHBYTES('MD5',@Password), @Name, @Gender , @Phone, @Birthday)";
             sqlCommand.Parameters.AddWithValue("@ID", this.txb_ID.Text.Trim());                    
             sqlCommand.Parameters.AddWithValue("@Password", this.txb_Password.Text.Trim());
             sqlCommand.Parameters["@Password"].SqlDbType = SqlDbType.VarChar;
             sqlCommand.Parameters.AddWithValue("@Name", txb_Name.Text);
             sqlCommand.Parameters.AddWithValue("@Phone", txb_Phone.Text);
+            sqlCommand.Parameters.AddWithValue("@Birthday", this.dtp_Birthday.Value);
             if (rdb_Female.Checked)
             {
                 sqlCommand.Parameters.AddWithValue("@Gender", '女');

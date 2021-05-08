@@ -180,7 +180,7 @@
             this.txb_DoctorPassword.PasswordChar = '*';
             this.txb_DoctorPassword.Size = new System.Drawing.Size(176, 28);
             this.txb_DoctorPassword.TabIndex = 9;
-            this.txb_DoctorPassword.Text = "1";
+            this.txb_DoctorPassword.Text = "11";
             this.txb_DoctorPassword.UseSystemPasswordChar = true;
             // 
             // txb_DoctorID

@@ -15,7 +15,7 @@ namespace OutpatientSystem
     public partial class frm_Charge : Form
     {
         private string no;
-        private int balance=0;
+        private decimal balance=0;
         public frm_Charge()
         {
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace OutpatientSystem
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
             if (sqlDataReader.Read())
             {
-                balance = (int)sqlDataReader["Balance"];
+                balance = (decimal)sqlDataReader["Balance"];
                 lbl_CurrentBalance.Text = sqlDataReader["Balance"].ToString() + "元";
             }
             sqlConnection.Close();
@@ -83,7 +83,7 @@ namespace OutpatientSystem
             sqlCommand.CommandText =
                 "UPDATE dbo.tb_User SET Balance=@Balance WHERE ID=@ID";
             sqlCommand.Parameters.AddWithValue("@ID", no);
-            balance = balance + Convert.ToInt32(txb_Money.Text);
+            balance = balance + Convert.ToDecimal(txb_Money.Text);
             sqlCommand.Parameters.AddWithValue("@Balance", balance);
             sqlConnection.Open();
             int rowAffected = sqlCommand.ExecuteNonQuery();

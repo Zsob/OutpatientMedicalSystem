@@ -179,6 +179,7 @@
             this.ptb_Photo.Location = new System.Drawing.Point(21, 231);
             this.ptb_Photo.Name = "ptb_Photo";
             this.ptb_Photo.Size = new System.Drawing.Size(187, 143);
+            this.ptb_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptb_Photo.TabIndex = 64;
             this.ptb_Photo.TabStop = false;
             // 

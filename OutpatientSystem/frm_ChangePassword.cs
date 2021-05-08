@@ -19,6 +19,8 @@ namespace OutpatientSystem
         public frm_ChangePassword()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+
         }
         public frm_ChangePassword(string no,int state):this()
         {

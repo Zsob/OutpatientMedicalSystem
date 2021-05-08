@@ -40,6 +40,8 @@
             this.rdb_Male = new System.Windows.Forms.RadioButton();
             this.rdb_Female = new System.Windows.Forms.RadioButton();
             this.btn_Submit = new System.Windows.Forms.Button();
+            this.lbl_Birthday = new System.Windows.Forms.Label();
+            this.dtp_Birthday = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // lbl_ID
@@ -151,7 +153,7 @@
             // btn_Submit
             // 
             this.btn_Submit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Submit.Location = new System.Drawing.Point(260, 258);
+            this.btn_Submit.Location = new System.Drawing.Point(267, 280);
             this.btn_Submit.Name = "btn_Submit";
             this.btn_Submit.Size = new System.Drawing.Size(92, 36);
             this.btn_Submit.TabIndex = 12;
@@ -159,11 +161,33 @@
             this.btn_Submit.UseVisualStyleBackColor = true;
             this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
             // 
-            // SignUp
+            // lbl_Birthday
+            // 
+            this.lbl_Birthday.AutoSize = true;
+            this.lbl_Birthday.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_Birthday.Location = new System.Drawing.Point(113, 236);
+            this.lbl_Birthday.Name = "lbl_Birthday";
+            this.lbl_Birthday.Size = new System.Drawing.Size(69, 20);
+            this.lbl_Birthday.TabIndex = 13;
+            this.lbl_Birthday.Text = "生日：";
+            // 
+            // dtp_Birthday
+            // 
+            this.dtp_Birthday.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dtp_Birthday.Location = new System.Drawing.Point(200, 236);
+            this.dtp_Birthday.MaxDate = new System.DateTime(2021, 4, 23, 0, 0, 0, 0);
+            this.dtp_Birthday.Name = "dtp_Birthday";
+            this.dtp_Birthday.Size = new System.Drawing.Size(266, 30);
+            this.dtp_Birthday.TabIndex = 14;
+            this.dtp_Birthday.Value = new System.DateTime(2021, 4, 23, 0, 0, 0, 0);
+            // 
+            // frm_SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(574, 359);
+            this.Controls.Add(this.dtp_Birthday);
+            this.Controls.Add(this.lbl_Birthday);
             this.Controls.Add(this.btn_Submit);
             this.Controls.Add(this.rdb_Female);
             this.Controls.Add(this.rdb_Male);
@@ -176,7 +200,7 @@
             this.Controls.Add(this.lbl_Gender);
             this.Controls.Add(this.lbl_Password);
             this.Controls.Add(this.lbl_ID);
-            this.Name = "SignUp";
+            this.Name = "frm_SignUp";
             this.Text = "注册";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -197,5 +221,7 @@
         private System.Windows.Forms.RadioButton rdb_Male;
         private System.Windows.Forms.RadioButton rdb_Female;
         private System.Windows.Forms.Button btn_Submit;
+        private System.Windows.Forms.Label lbl_Birthday;
+        private System.Windows.Forms.DateTimePicker dtp_Birthday;
     }
 }

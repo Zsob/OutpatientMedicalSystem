@@ -37,6 +37,7 @@ namespace OutpatientSystem
             this.cmb_DepartmentSelection.DataSource = indicationTable;
             cmb_DepartmentSelection.SelectedIndex = 0;
             sqlConnection.Close();
+            cmb_Noon.SelectedIndex = 0;
         }
         public frm_Appointment(string no) : this()
         {
@@ -56,7 +57,7 @@ namespace OutpatientSystem
             DataTable appointTable = new DataTable();
 
             sqlCommand.CommandText
-                = "SELECT I.Indication,D.Name,O.OrderTime FROM dbo.tb_Order AS O JOIN dbo.tb_Doctor AS D ON D.DoctorNo = O.DoctorNo JOIN dbo.tb_Indications AS I ON I.No=D.IndicationNo WHERE O.UserID=@UserID";
+                = "SELECT O.OrderNo,I.Indication,D.Name,O.OrderTime,O.Noon FROM dbo.tb_Order AS O JOIN dbo.tb_Doctor AS D ON D.DoctorNo = O.DoctorNo JOIN dbo.tb_Indications AS I ON I.No=D.IndicationNo WHERE O.UserID=@UserID";
 
             sqlCommand.Parameters.AddWithValue("@UserID", no);
             sqlConnection.Open();
@@ -66,6 +67,8 @@ namespace OutpatientSystem
             dgv_Appointment.Columns["Indication"].HeaderText = "科室";
             dgv_Appointment.Columns["Name"].HeaderText = "医生姓名";
             dgv_Appointment.Columns["OrderTime"].HeaderText = "预约时间";
+            dgv_Appointment.Columns["OrderNo"].HeaderText = "预约编号";
+            dgv_Appointment.Columns["Noon"].HeaderText = "午别";
         }
 
         private void btn_Appointment_Click(object sender, EventArgs e)
@@ -88,7 +91,8 @@ namespace OutpatientSystem
             }
             sqlConnection.Close();
             sqlCommand.CommandText =
-                "INSERT dbo.tb_Order (DoctorNo,UserID,OrderTime) VALUES (@DoctorNo,@UserID,@OrderTime )";
+                "INSERT dbo.tb_Order (DoctorNo,UserID,OrderTime,Noon,OrderStatus) VALUES (@DoctorNo,@UserID,@OrderTime,@Noon,'0' )";
+            sqlCommand.Parameters.AddWithValue("@Noon", cmb_Noon.SelectedItem.ToString());
             sqlConnection.Open();
             int rowAffected = sqlCommand.ExecuteNonQuery();
             if (rowAffected > 0)
@@ -127,6 +131,40 @@ namespace OutpatientSystem
 
         }
 
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            if (dgv_Appointment.RowCount==0)
+            {
+                MessageBox.Show("您未进行任何选择");
+                return;
+            }
+            DialogResult result = MessageBox.Show("是否取消预约", "", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            SqlConnection sqlConnection = new SqlConnection();
+            sqlConnection.ConnectionString =
+                ConfigurationManager.ConnectionStrings["Sql"].ConnectionString;
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = sqlConnection;
+            sqlCommand.CommandText = $@"DELETE FROM dbo.tb_Order WHERE OrderNo=@OrderNo";
+            sqlCommand.Parameters.AddWithValue("@OrderNo", dgv_Appointment.CurrentRow.Cells["OrderNo"].Value.ToString());
+            sqlConnection.Open();
+            int rowAffected = sqlCommand.ExecuteNonQuery();
+            if (rowAffected > 0)
+            {
+                MessageBox.Show("取消预约成功！");
+                DataRowView drv = dgv_Appointment.CurrentRow.DataBoundItem as DataRowView;
+                drv.Delete();
+                //updateAppointment();
+            }
+            else
+            {
+                MessageBox.Show("取消预约失败！");
+            }
+            sqlConnection.Close();
+        }
     }
 }
 

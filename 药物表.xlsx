@@ -1,0 +1,17 @@
+USE [HospitalBase]
+GO
+
+INSERT INTO [dbo].[tb_Medicines]
+           ([MedicalNo]
+           ,[MedicalName]
+           ,[Price]
+           ,[Pinyin]
+           ,[Stock])
+     VALUES
+           (<MedicalNo, int,>
+           ,<MedicalName, varchar(50),>
+           ,<Price, varchar(50),>
+           ,<Pinyin, varchar(50),>
+           ,<Stock, varchar(50),>)
+GO
+
