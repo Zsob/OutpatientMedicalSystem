@@ -136,7 +136,7 @@ CREATE TABLE tb_Order
 	Noon
 		VARCHAR(20)
 		NOT NULL,
-	OrderStatus
+	OrderStatus    --0为未接诊，1为已诊断
 		VARCHAR(20)
 		NULL
 		
@@ -168,7 +168,52 @@ BULK INSERT tb_Medicines
 		,ROWTERMINATOR='\n'
 		,FIRSTROW=2);
 
+
+CREATE TABLE tb_Diseases
+(
+	DiseaseNo
+		 INT
+		 IDENTITY
+		 PRIMARY KEY,
+	DiseaseName
+		VARCHAR(50)
+		NOT NULL,
+	IndicationNo
+		INT
+		NOT NULL
+)
+INSERT dbo.tb_Diseases
+(
+    DiseaseName,
+    IndicationNo
+)
+VALUES
+( '慢性支气管炎',1 ),
+( '鼻炎',1 ),
+( '哮喘',1 ),
+( '慢性胃炎',1 ),
+( '慢性肠炎腹泻',1 ),
+( '便秘',1 ),
+( '糖尿病',1 ),
+( '高血压',1 ),
+( '心律失常',1 ),
+( '消化不良',1 ),
+( '急慢性外耳道炎',2 ),
+( '外伤性鼓膜穿孔',2 ),
+( '中耳炎',2 ),
+( '过敏性鼻炎',2 ),
+( '急慢性鼻窦炎',2 ),
+( '鼻咽癌',2 ),
+( '扁桃体炎',2 ),
+( '气管异物',2 ),
+( '耳石症',2 ),
+( '睡眠打鼾',2 )
+
+
+
 SELECT *FROM dbo.tb_Order
-SELECT O.OrderNo,O.UserID,U.Name,U.Gender,YEAR(GETDATE())-YEAR(U.Birthday) AS Age,U.Phone,O.OrderTime,O.Noon,O.DoctorNo FROM dbo.tb_Order AS O JOIN dbo.tb_User AS U ON O.UserID=U.ID WHERE O.DoctorNo='1' ORDER BY O.Noon ASC
+SELECT O.OrderNo,O.UserID,U.Name,U.Gender,YEAR(GETDATE())-YEAR(U.Birthday) AS Age,U.Phone,O.OrderTime,O.Noon,O.DoctorNo,U.Photo FROM dbo.tb_Order AS O JOIN dbo.tb_User AS U ON O.UserID=U.ID WHERE O.DoctorNo='1' ORDER BY O.Noon ASC
 SELECT O.OrderNo,I.Indication,D.Name,O.OrderTime,O.Noon FROM dbo.tb_Order AS O JOIN dbo.tb_Doctor AS D ON D.DoctorNo = O.DoctorNo JOIN dbo.tb_Indications AS I ON I.No=D.IndicationNo
+SELECT * FROM dbo.tb_Indications;
+SELECT * FROM dbo.tb_Diseases;
  

@@ -15,6 +15,7 @@ namespace OutpatientSystem
     public partial class frm_Lock : Form
     {
         string no;
+        int time = 3;
         public frm_Lock()
         {
             InitializeComponent();
@@ -45,13 +46,20 @@ namespace OutpatientSystem
             sqlConnection.Close();
             if (rowCount > 0)
             {
-                MessageBox.Show("验证成功！");
+                MessageBox.Show("验证成功！请点击解锁");
                 btn_Confirm.DialogResult = DialogResult.OK;
                 btn_Confirm.Enabled = true;
             }
             else
             {
-                MessageBox.Show("密码错误！");
+                time--;
+                if (time==0)
+                {
+                    lbl_Verification.Enabled = false;
+                    MessageBox.Show("错误次数过多，请点击退出按钮！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                MessageBox.Show($"密码错误！还可以尝试{time}次！");
                 return;
             }
 

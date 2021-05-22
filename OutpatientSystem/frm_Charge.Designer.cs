@@ -47,9 +47,11 @@
             this.btn_Recharge = new System.Windows.Forms.Button();
             this.lbl_Balance = new System.Windows.Forms.Label();
             this.lbl_CurrentBalance = new System.Windows.Forms.Label();
+            this.tbr_Money = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_WeChat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_Alipay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_BankCard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbr_Money)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_Money
@@ -106,17 +108,20 @@
             // txb_Money
             // 
             this.txb_Money.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txb_Money.Location = new System.Drawing.Point(29, 216);
+            this.txb_Money.Location = new System.Drawing.Point(29, 199);
             this.txb_Money.Name = "txb_Money";
             this.txb_Money.Size = new System.Drawing.Size(318, 34);
             this.txb_Money.TabIndex = 4;
+            this.txb_Money.Text = "0";
             this.txb_Money.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txb_Money.TextChanged += new System.EventHandler(this.txb_Money_TextChanged);
+            this.txb_Money.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_Money_KeyPress);
             // 
             // lbl_Pay
             // 
             this.lbl_Pay.AutoSize = true;
             this.lbl_Pay.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_Pay.Location = new System.Drawing.Point(25, 286);
+            this.lbl_Pay.Location = new System.Drawing.Point(25, 312);
             this.lbl_Pay.Name = "lbl_Pay";
             this.lbl_Pay.Size = new System.Drawing.Size(106, 24);
             this.lbl_Pay.TabIndex = 5;
@@ -126,7 +131,7 @@
             // 
             this.pbx_WeChat.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbx_WeChat.ErrorImage")));
             this.pbx_WeChat.Image = ((System.Drawing.Image)(resources.GetObject("pbx_WeChat.Image")));
-            this.pbx_WeChat.Location = new System.Drawing.Point(29, 327);
+            this.pbx_WeChat.Location = new System.Drawing.Point(29, 353);
             this.pbx_WeChat.Name = "pbx_WeChat";
             this.pbx_WeChat.Size = new System.Drawing.Size(81, 70);
             this.pbx_WeChat.TabIndex = 6;
@@ -135,7 +140,7 @@
             // pbx_Alipay
             // 
             this.pbx_Alipay.Image = ((System.Drawing.Image)(resources.GetObject("pbx_Alipay.Image")));
-            this.pbx_Alipay.Location = new System.Drawing.Point(29, 403);
+            this.pbx_Alipay.Location = new System.Drawing.Point(29, 429);
             this.pbx_Alipay.Name = "pbx_Alipay";
             this.pbx_Alipay.Size = new System.Drawing.Size(81, 70);
             this.pbx_Alipay.TabIndex = 7;
@@ -145,7 +150,7 @@
             // 
             this.lbl_WeChat.AutoSize = true;
             this.lbl_WeChat.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_WeChat.Location = new System.Drawing.Point(116, 350);
+            this.lbl_WeChat.Location = new System.Drawing.Point(116, 376);
             this.lbl_WeChat.Name = "lbl_WeChat";
             this.lbl_WeChat.Size = new System.Drawing.Size(58, 24);
             this.lbl_WeChat.TabIndex = 8;
@@ -155,7 +160,7 @@
             // 
             this.lbl_Alipay.AutoSize = true;
             this.lbl_Alipay.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_Alipay.Location = new System.Drawing.Point(116, 424);
+            this.lbl_Alipay.Location = new System.Drawing.Point(116, 450);
             this.lbl_Alipay.Name = "lbl_Alipay";
             this.lbl_Alipay.Size = new System.Drawing.Size(82, 24);
             this.lbl_Alipay.TabIndex = 9;
@@ -165,7 +170,7 @@
             // 
             this.lbl_BankCard.AutoSize = true;
             this.lbl_BankCard.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_BankCard.Location = new System.Drawing.Point(116, 500);
+            this.lbl_BankCard.Location = new System.Drawing.Point(116, 526);
             this.lbl_BankCard.Name = "lbl_BankCard";
             this.lbl_BankCard.Size = new System.Drawing.Size(82, 24);
             this.lbl_BankCard.TabIndex = 11;
@@ -174,7 +179,7 @@
             // pbx_BankCard
             // 
             this.pbx_BankCard.Image = ((System.Drawing.Image)(resources.GetObject("pbx_BankCard.Image")));
-            this.pbx_BankCard.Location = new System.Drawing.Point(29, 479);
+            this.pbx_BankCard.Location = new System.Drawing.Point(29, 505);
             this.pbx_BankCard.Name = "pbx_BankCard";
             this.pbx_BankCard.Size = new System.Drawing.Size(81, 70);
             this.pbx_BankCard.TabIndex = 10;
@@ -184,7 +189,7 @@
             // 
             this.rdb_WeChat.AutoSize = true;
             this.rdb_WeChat.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdb_WeChat.Location = new System.Drawing.Point(299, 353);
+            this.rdb_WeChat.Location = new System.Drawing.Point(299, 379);
             this.rdb_WeChat.Name = "rdb_WeChat";
             this.rdb_WeChat.Size = new System.Drawing.Size(17, 16);
             this.rdb_WeChat.TabIndex = 12;
@@ -195,7 +200,7 @@
             // 
             this.rdb_Alipay.AutoSize = true;
             this.rdb_Alipay.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdb_Alipay.Location = new System.Drawing.Point(299, 432);
+            this.rdb_Alipay.Location = new System.Drawing.Point(299, 458);
             this.rdb_Alipay.Name = "rdb_Alipay";
             this.rdb_Alipay.Size = new System.Drawing.Size(17, 16);
             this.rdb_Alipay.TabIndex = 13;
@@ -206,7 +211,7 @@
             // 
             this.rdb_BankCard.AutoSize = true;
             this.rdb_BankCard.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdb_BankCard.Location = new System.Drawing.Point(299, 503);
+            this.rdb_BankCard.Location = new System.Drawing.Point(299, 529);
             this.rdb_BankCard.Name = "rdb_BankCard";
             this.rdb_BankCard.Size = new System.Drawing.Size(17, 16);
             this.rdb_BankCard.TabIndex = 14;
@@ -218,7 +223,7 @@
             this.btn_Recharge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_Recharge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Recharge.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Recharge.Location = new System.Drawing.Point(137, 563);
+            this.btn_Recharge.Location = new System.Drawing.Point(137, 589);
             this.btn_Recharge.Name = "btn_Recharge";
             this.btn_Recharge.Size = new System.Drawing.Size(102, 40);
             this.btn_Recharge.TabIndex = 15;
@@ -246,12 +251,24 @@
             this.lbl_CurrentBalance.Size = new System.Drawing.Size(0, 24);
             this.lbl_CurrentBalance.TabIndex = 17;
             // 
+            // tbr_Money
+            // 
+            this.tbr_Money.Location = new System.Drawing.Point(61, 253);
+            this.tbr_Money.Maximum = 1000;
+            this.tbr_Money.Name = "tbr_Money";
+            this.tbr_Money.Size = new System.Drawing.Size(255, 56);
+            this.tbr_Money.SmallChange = 100;
+            this.tbr_Money.TabIndex = 18;
+            this.tbr_Money.TickFrequency = 100;
+            this.tbr_Money.Scroll += new System.EventHandler(this.tbr_Money_Scroll);
+            // 
             // frm_Charge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(373, 646);
+            this.Controls.Add(this.tbr_Money);
             this.Controls.Add(this.lbl_CurrentBalance);
             this.Controls.Add(this.lbl_Balance);
             this.Controls.Add(this.btn_Recharge);
@@ -275,6 +292,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbx_WeChat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_Alipay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_BankCard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbr_Money)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,5 +318,6 @@
         private System.Windows.Forms.Button btn_Recharge;
         private System.Windows.Forms.Label lbl_Balance;
         private System.Windows.Forms.Label lbl_CurrentBalance;
+        private System.Windows.Forms.TrackBar tbr_Money;
     }
 }

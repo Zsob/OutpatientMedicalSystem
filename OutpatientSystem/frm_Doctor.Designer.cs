@@ -38,6 +38,7 @@
             this.tabP_PatientList = new System.Windows.Forms.TabPage();
             this.dgv_Patient = new System.Windows.Forms.DataGridView();
             this.grb_PatientInformatiom = new System.Windows.Forms.GroupBox();
+            this.ptb_Photo = new System.Windows.Forms.PictureBox();
             this.txb_Phone = new System.Windows.Forms.TextBox();
             this.lbl_Phone = new System.Windows.Forms.Label();
             this.txb_Age = new System.Windows.Forms.TextBox();
@@ -47,6 +48,18 @@
             this.txb_PatientName = new System.Windows.Forms.TextBox();
             this.lbl_PatientName = new System.Windows.Forms.Label();
             this.tabP_Diagnosis = new System.Windows.Forms.TabPage();
+            this.gpb_Information = new System.Windows.Forms.GroupBox();
+            this.txb_tab1_Age = new System.Windows.Forms.TextBox();
+            this.lbl_tab1_Age = new System.Windows.Forms.Label();
+            this.txb_tab1_Gender = new System.Windows.Forms.TextBox();
+            this.lbl_tab1_Gender = new System.Windows.Forms.Label();
+            this.txb_tab1_Name = new System.Windows.Forms.TextBox();
+            this.lbl_tab1_Name = new System.Windows.Forms.Label();
+            this.dgv_Diagnosis = new System.Windows.Forms.DataGridView();
+            this.gpb_DiagnosticDictionary = new System.Windows.Forms.GroupBox();
+            this.btn_Search = new System.Windows.Forms.Button();
+            this.txb_Search = new System.Windows.Forms.TextBox();
+            this.tvw_Diseases = new System.Windows.Forms.TreeView();
             this.tabP_DoctorsOrder = new System.Windows.Forms.TabPage();
             this.btn_Fresh = new System.Windows.Forms.Button();
             this.btn_ChangeNumber = new System.Windows.Forms.Button();
@@ -56,13 +69,19 @@
             this.btn_EndOfVisit = new System.Windows.Forms.Button();
             this.btn_Appointment = new System.Windows.Forms.Button();
             this.btn_Exit = new System.Windows.Forms.Button();
-            this.ptb_Photo = new System.Windows.Forms.PictureBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mns_Doctor.SuspendLayout();
             this.tabC_Diagnosis.SuspendLayout();
             this.tabP_PatientList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Patient)).BeginInit();
             this.grb_PatientInformatiom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Photo)).BeginInit();
+            this.tabP_Diagnosis.SuspendLayout();
+            this.gpb_Information.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Diagnosis)).BeginInit();
+            this.gpb_DiagnosticDictionary.SuspendLayout();
             this.SuspendLayout();
             // 
             // mns_Doctor
@@ -128,6 +147,7 @@
             this.tabC_Diagnosis.SelectedIndex = 0;
             this.tabC_Diagnosis.Size = new System.Drawing.Size(1091, 570);
             this.tabC_Diagnosis.TabIndex = 1;
+            this.tabC_Diagnosis.SelectedIndexChanged += new System.EventHandler(this.tabC_Diagnosis_SelectedIndexChanged);
             // 
             // tabP_PatientList
             // 
@@ -173,6 +193,15 @@
             this.grb_PatientInformatiom.TabIndex = 0;
             this.grb_PatientInformatiom.TabStop = false;
             this.grb_PatientInformatiom.Text = "患者挂号信息";
+            // 
+            // ptb_Photo
+            // 
+            this.ptb_Photo.Location = new System.Drawing.Point(74, 292);
+            this.ptb_Photo.Name = "ptb_Photo";
+            this.ptb_Photo.Size = new System.Drawing.Size(228, 180);
+            this.ptb_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptb_Photo.TabIndex = 8;
+            this.ptb_Photo.TabStop = false;
             // 
             // txb_Phone
             // 
@@ -248,12 +277,135 @@
             // 
             // tabP_Diagnosis
             // 
+            this.tabP_Diagnosis.Controls.Add(this.gpb_Information);
+            this.tabP_Diagnosis.Controls.Add(this.dgv_Diagnosis);
+            this.tabP_Diagnosis.Controls.Add(this.gpb_DiagnosticDictionary);
             this.tabP_Diagnosis.Location = new System.Drawing.Point(4, 30);
             this.tabP_Diagnosis.Name = "tabP_Diagnosis";
             this.tabP_Diagnosis.Size = new System.Drawing.Size(1083, 536);
             this.tabP_Diagnosis.TabIndex = 1;
             this.tabP_Diagnosis.Text = "诊断";
             this.tabP_Diagnosis.UseVisualStyleBackColor = true;
+            // 
+            // gpb_Information
+            // 
+            this.gpb_Information.Controls.Add(this.txb_tab1_Age);
+            this.gpb_Information.Controls.Add(this.lbl_tab1_Age);
+            this.gpb_Information.Controls.Add(this.txb_tab1_Gender);
+            this.gpb_Information.Controls.Add(this.lbl_tab1_Gender);
+            this.gpb_Information.Controls.Add(this.txb_tab1_Name);
+            this.gpb_Information.Controls.Add(this.lbl_tab1_Name);
+            this.gpb_Information.Location = new System.Drawing.Point(355, 4);
+            this.gpb_Information.Name = "gpb_Information";
+            this.gpb_Information.Size = new System.Drawing.Size(720, 85);
+            this.gpb_Information.TabIndex = 2;
+            this.gpb_Information.TabStop = false;
+            this.gpb_Information.Text = "患者信息";
+            // 
+            // txb_tab1_Age
+            // 
+            this.txb_tab1_Age.Location = new System.Drawing.Point(594, 30);
+            this.txb_tab1_Age.Name = "txb_tab1_Age";
+            this.txb_tab1_Age.ReadOnly = true;
+            this.txb_tab1_Age.Size = new System.Drawing.Size(84, 30);
+            this.txb_tab1_Age.TabIndex = 9;
+            // 
+            // lbl_tab1_Age
+            // 
+            this.lbl_tab1_Age.AutoSize = true;
+            this.lbl_tab1_Age.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_tab1_Age.Location = new System.Drawing.Point(526, 35);
+            this.lbl_tab1_Age.Name = "lbl_tab1_Age";
+            this.lbl_tab1_Age.Size = new System.Drawing.Size(62, 25);
+            this.lbl_tab1_Age.TabIndex = 8;
+            this.lbl_tab1_Age.Text = "年龄";
+            // 
+            // txb_tab1_Gender
+            // 
+            this.txb_tab1_Gender.Location = new System.Drawing.Point(421, 30);
+            this.txb_tab1_Gender.Name = "txb_tab1_Gender";
+            this.txb_tab1_Gender.ReadOnly = true;
+            this.txb_tab1_Gender.Size = new System.Drawing.Size(59, 30);
+            this.txb_tab1_Gender.TabIndex = 7;
+            // 
+            // lbl_tab1_Gender
+            // 
+            this.lbl_tab1_Gender.AutoSize = true;
+            this.lbl_tab1_Gender.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_tab1_Gender.Location = new System.Drawing.Point(353, 35);
+            this.lbl_tab1_Gender.Name = "lbl_tab1_Gender";
+            this.lbl_tab1_Gender.Size = new System.Drawing.Size(62, 25);
+            this.lbl_tab1_Gender.TabIndex = 6;
+            this.lbl_tab1_Gender.Text = "性别";
+            // 
+            // txb_tab1_Name
+            // 
+            this.txb_tab1_Name.Location = new System.Drawing.Point(159, 30);
+            this.txb_tab1_Name.Name = "txb_tab1_Name";
+            this.txb_tab1_Name.ReadOnly = true;
+            this.txb_tab1_Name.Size = new System.Drawing.Size(157, 30);
+            this.txb_tab1_Name.TabIndex = 2;
+            // 
+            // lbl_tab1_Name
+            // 
+            this.lbl_tab1_Name.AutoSize = true;
+            this.lbl_tab1_Name.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_tab1_Name.Location = new System.Drawing.Point(86, 35);
+            this.lbl_tab1_Name.Name = "lbl_tab1_Name";
+            this.lbl_tab1_Name.Size = new System.Drawing.Size(62, 25);
+            this.lbl_tab1_Name.TabIndex = 1;
+            this.lbl_tab1_Name.Text = "姓名";
+            // 
+            // dgv_Diagnosis
+            // 
+            this.dgv_Diagnosis.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_Diagnosis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Diagnosis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.dgv_Diagnosis.Location = new System.Drawing.Point(355, 95);
+            this.dgv_Diagnosis.Name = "dgv_Diagnosis";
+            this.dgv_Diagnosis.RowTemplate.Height = 27;
+            this.dgv_Diagnosis.Size = new System.Drawing.Size(614, 427);
+            this.dgv_Diagnosis.TabIndex = 1;
+            this.dgv_Diagnosis.TabStop = false;
+            // 
+            // gpb_DiagnosticDictionary
+            // 
+            this.gpb_DiagnosticDictionary.Controls.Add(this.btn_Search);
+            this.gpb_DiagnosticDictionary.Controls.Add(this.txb_Search);
+            this.gpb_DiagnosticDictionary.Controls.Add(this.tvw_Diseases);
+            this.gpb_DiagnosticDictionary.Location = new System.Drawing.Point(4, 4);
+            this.gpb_DiagnosticDictionary.Name = "gpb_DiagnosticDictionary";
+            this.gpb_DiagnosticDictionary.Size = new System.Drawing.Size(331, 529);
+            this.gpb_DiagnosticDictionary.TabIndex = 0;
+            this.gpb_DiagnosticDictionary.TabStop = false;
+            this.gpb_DiagnosticDictionary.Text = "诊断字典";
+            // 
+            // btn_Search
+            // 
+            this.btn_Search.Location = new System.Drawing.Point(217, 28);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(98, 32);
+            this.btn_Search.TabIndex = 2;
+            this.btn_Search.Text = "搜索";
+            this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+            // 
+            // txb_Search
+            // 
+            this.txb_Search.Location = new System.Drawing.Point(6, 30);
+            this.txb_Search.Name = "txb_Search";
+            this.txb_Search.Size = new System.Drawing.Size(205, 30);
+            this.txb_Search.TabIndex = 1;
+            // 
+            // tvw_Diseases
+            // 
+            this.tvw_Diseases.Location = new System.Drawing.Point(6, 66);
+            this.tvw_Diseases.Name = "tvw_Diseases";
+            this.tvw_Diseases.Size = new System.Drawing.Size(319, 457);
+            this.tvw_Diseases.TabIndex = 0;
             // 
             // tabP_DoctorsOrder
             // 
@@ -267,6 +419,7 @@
             // btn_Fresh
             // 
             this.btn_Fresh.BackColor = System.Drawing.Color.White;
+            this.btn_Fresh.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_Fresh.Location = new System.Drawing.Point(12, 52);
             this.btn_Fresh.Name = "btn_Fresh";
             this.btn_Fresh.Size = new System.Drawing.Size(99, 49);
@@ -277,6 +430,7 @@
             // btn_ChangeNumber
             // 
             this.btn_ChangeNumber.BackColor = System.Drawing.Color.White;
+            this.btn_ChangeNumber.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_ChangeNumber.Location = new System.Drawing.Point(111, 52);
             this.btn_ChangeNumber.Name = "btn_ChangeNumber";
             this.btn_ChangeNumber.Size = new System.Drawing.Size(99, 49);
@@ -287,6 +441,7 @@
             // btn_Admission
             // 
             this.btn_Admission.BackColor = System.Drawing.Color.White;
+            this.btn_Admission.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_Admission.Location = new System.Drawing.Point(210, 52);
             this.btn_Admission.Name = "btn_Admission";
             this.btn_Admission.Size = new System.Drawing.Size(99, 49);
@@ -298,6 +453,7 @@
             // btn_CancelAppointment
             // 
             this.btn_CancelAppointment.BackColor = System.Drawing.Color.White;
+            this.btn_CancelAppointment.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_CancelAppointment.Location = new System.Drawing.Point(309, 52);
             this.btn_CancelAppointment.Name = "btn_CancelAppointment";
             this.btn_CancelAppointment.Size = new System.Drawing.Size(99, 49);
@@ -308,6 +464,7 @@
             // btn_AdmissionNotice
             // 
             this.btn_AdmissionNotice.BackColor = System.Drawing.Color.White;
+            this.btn_AdmissionNotice.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_AdmissionNotice.Location = new System.Drawing.Point(408, 52);
             this.btn_AdmissionNotice.Name = "btn_AdmissionNotice";
             this.btn_AdmissionNotice.Size = new System.Drawing.Size(99, 49);
@@ -318,6 +475,7 @@
             // btn_EndOfVisit
             // 
             this.btn_EndOfVisit.BackColor = System.Drawing.Color.White;
+            this.btn_EndOfVisit.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_EndOfVisit.Location = new System.Drawing.Point(507, 52);
             this.btn_EndOfVisit.Name = "btn_EndOfVisit";
             this.btn_EndOfVisit.Size = new System.Drawing.Size(99, 49);
@@ -328,6 +486,7 @@
             // btn_Appointment
             // 
             this.btn_Appointment.BackColor = System.Drawing.Color.White;
+            this.btn_Appointment.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_Appointment.Location = new System.Drawing.Point(606, 52);
             this.btn_Appointment.Name = "btn_Appointment";
             this.btn_Appointment.Size = new System.Drawing.Size(99, 49);
@@ -338,6 +497,7 @@
             // btn_Exit
             // 
             this.btn_Exit.BackColor = System.Drawing.Color.White;
+            this.btn_Exit.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_Exit.Location = new System.Drawing.Point(705, 52);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(99, 49);
@@ -346,14 +506,20 @@
             this.btn_Exit.UseVisualStyleBackColor = false;
             this.btn_Exit.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
-            // ptb_Photo
+            // Column1
             // 
-            this.ptb_Photo.Location = new System.Drawing.Point(74, 292);
-            this.ptb_Photo.Name = "ptb_Photo";
-            this.ptb_Photo.Size = new System.Drawing.Size(228, 180);
-            this.ptb_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptb_Photo.TabIndex = 8;
-            this.ptb_Photo.TabStop = false;
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Column2";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Column3";
+            this.Column3.Name = "Column3";
             // 
             // frm_Doctor
             // 
@@ -381,6 +547,12 @@
             this.grb_PatientInformatiom.ResumeLayout(false);
             this.grb_PatientInformatiom.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Photo)).EndInit();
+            this.tabP_Diagnosis.ResumeLayout(false);
+            this.gpb_Information.ResumeLayout(false);
+            this.gpb_Information.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Diagnosis)).EndInit();
+            this.gpb_DiagnosticDictionary.ResumeLayout(false);
+            this.gpb_DiagnosticDictionary.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -417,5 +589,20 @@
         private System.Windows.Forms.Button btn_Appointment;
         private System.Windows.Forms.Button btn_Exit;
         private System.Windows.Forms.PictureBox ptb_Photo;
+        private System.Windows.Forms.GroupBox gpb_DiagnosticDictionary;
+        private System.Windows.Forms.Button btn_Search;
+        private System.Windows.Forms.TextBox txb_Search;
+        private System.Windows.Forms.TreeView tvw_Diseases;
+        private System.Windows.Forms.DataGridView dgv_Diagnosis;
+        private System.Windows.Forms.GroupBox gpb_Information;
+        private System.Windows.Forms.TextBox txb_tab1_Name;
+        private System.Windows.Forms.Label lbl_tab1_Name;
+        private System.Windows.Forms.TextBox txb_tab1_Age;
+        private System.Windows.Forms.Label lbl_tab1_Age;
+        private System.Windows.Forms.TextBox txb_tab1_Gender;
+        private System.Windows.Forms.Label lbl_tab1_Gender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }

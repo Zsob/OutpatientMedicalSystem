@@ -16,6 +16,7 @@ namespace OutpatientSystem
     public partial class frm_Doctor : Form
     {
         string doctorNo, Name, IndicationNo;
+        List<TreeNode> searchtreeNodes;
         public frm_Doctor()
         {
             InitializeComponent();
@@ -40,6 +41,8 @@ namespace OutpatientSystem
             refreshData();
             
             fillInformation();
+
+            LoadTreeView();
         }
 
         public void refreshData()
@@ -57,7 +60,7 @@ namespace OutpatientSystem
             sqlDataAdapter.Fill(dataTable);
             sqlConnection.Close();
             dgv_Patient.DataSource = dataTable;
-            dgv_Patient.Columns["OrderNo"].HeaderText = "订单编号";
+            dgv_Patient.Columns["OrderNo"].HeaderText = "就诊编号";
             dgv_Patient.Columns["UserID"].HeaderText = "患者编号";
             dgv_Patient.Columns["Name"].HeaderText ="姓名";
             dgv_Patient.Columns["Gender"].Visible = false;
@@ -78,7 +81,7 @@ namespace OutpatientSystem
             }
             txb_Gender.Text = dgv_Patient.CurrentRow.Cells["Gender"].Value.ToString();
             txb_Phone.Text= dgv_Patient.CurrentRow.Cells["Phone"].Value.ToString();
-            txb_Age.Text = dgv_Patient.CurrentRow.Cells["Age"].Value.ToString();
+            txb_Age.Text = dgv_Patient.CurrentRow.Cells["Age"].Value.ToString()+"岁";
             txb_PatientName.Text= dgv_Patient.CurrentRow.Cells["Name"].Value.ToString();
             if (dgv_Patient.CurrentRow.Cells["Photo"].Value != DBNull.Value)
             {
@@ -108,10 +111,18 @@ namespace OutpatientSystem
         private void dgv_Patient_Click(object sender, EventArgs e)
         {
             fillInformation();
+            txb_tab1_Name.Text = txb_PatientName.Text;
+            txb_tab1_Gender.Text = txb_Gender.Text;
+            txb_tab1_Age.Text = txb_Age.Text;
         }
 
         private void btn_Admission_Click(object sender, EventArgs e)
         {
+            //if (string.IsNullOrEmpty(txb_tab1_Name.Text))
+            //{
+            //    MessageBox.Show("还未选择就诊患者！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
             tabC_Diagnosis.SelectedTab = tabC_Diagnosis.TabPages[1];
         }
 
@@ -129,6 +140,64 @@ namespace OutpatientSystem
             }
         }
 
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+            LoadTreeView();
+            if (string.IsNullOrEmpty(txb_Search.Text))
+            {
+                MessageBox.Show("请输入搜索内容！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            searchtreeNodes = new List<TreeNode>();
+            foreach (TreeNode node in tvw_Diseases.Nodes)    
+            {
+                SearchLayer(node, this.txb_Search.Text);
+            }
+            for (int i = 0; i < searchtreeNodes.Count; i++)
+            {
+                TreeNode temp = searchtreeNodes[i];
+                ExpandNode(temp);
+                if (i == 0 && temp.Parent != null)
+                {
+                    tvw_Diseases.SelectedNode = temp.Parent;
+                }
+                temp.BackColor = Color.Yellow;
+            }
+        }
+
+        private void SearchLayer(TreeNode node, string name)
+        {
+            if (node.Nodes.Count != 0)
+            {
+                for (int i = 0; i < node.Nodes.Count; i++)
+                {
+                    SearchLayer(node.Nodes[i], name);
+                }
+            }
+            else if (string.Equals(node.Text, name) || node.Text.Contains(name))
+            {
+                searchtreeNodes.Add(node);
+            }
+        }
+
+        private void ExpandNode(TreeNode node)
+        {
+            if (node.Parent != null)
+            {
+                node.Parent.Expand();
+                ExpandNode(node.Parent);
+            }
+        }
+
+        private void tabC_Diagnosis_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabC_Diagnosis.SelectedTab != tabC_Diagnosis.TabPages[0] && string.IsNullOrEmpty(txb_tab1_Name.Text))
+            {
+                MessageBox.Show("还未选择就诊患者！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                tabC_Diagnosis.SelectedTab = tabC_Diagnosis.TabPages[0];
+            }
+        }
+
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("确定要退出工作台吗？", "医生门诊工作站", MessageBoxButtons.YesNo);
@@ -139,6 +208,41 @@ namespace OutpatientSystem
 
         }
 
-
+        public void LoadTreeView()
+        {
+            SqlConnection sqlConnection = new SqlConnection();
+            sqlConnection.ConnectionString =
+            ConfigurationManager.ConnectionStrings["Sql"].ConnectionString;
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = sqlConnection;
+            sqlCommand.CommandText =
+                "SELECT * FROM dbo.tb_Indications;"
+                + "SELECT * FROM dbo.tb_Diseases;";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            DataSet dataSet = new DataSet();
+            sqlConnection.Open();
+            sqlDataAdapter.Fill(dataSet);
+            sqlConnection.Close();
+            DataTable indicationsTable = dataSet.Tables[0];
+            DataTable diseasesTable = dataSet.Tables[1];
+            DataRelation dataRelation = 
+                new DataRelation("Indication_Disease", indicationsTable.Columns["No"], diseasesTable.Columns["IndicationNo"], false);
+            dataSet.Relations.Add(dataRelation);
+            //↑有点浪费
+            tvw_Diseases.Nodes.Clear();
+            foreach (DataRow indicationRow in indicationsTable.Rows)
+            {
+                TreeNode indicationNode = new TreeNode();
+                indicationNode.Text = indicationRow["Indication"].ToString();
+                tvw_Diseases.Nodes.Add(indicationNode);
+                foreach (DataRow diseaseRow in indicationRow.GetChildRows("Indication_Disease"))
+                {
+                    TreeNode diseaseNode = new TreeNode();
+                    diseaseNode.Text = diseaseRow["DiseaseName"].ToString();
+                    indicationNode.Nodes.Add(diseaseNode);
+                }
+            }
+        }
     }
 }

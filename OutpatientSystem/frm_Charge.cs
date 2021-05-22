@@ -76,6 +76,12 @@ namespace OutpatientSystem
                 MessageBox.Show("请选择支付方式");
                 return;
             }
+            if (txb_Money.Text=="0")
+            {
+                MessageBox.Show("未输入充值金额");
+                txb_Money.Focus();
+                return;
+            }
             SqlConnection sqlConnection = new SqlConnection();
             sqlConnection.ConnectionString = ConfigurationManager.ConnectionStrings["Sql"].ConnectionString;
             SqlCommand sqlCommand = new SqlCommand();
@@ -94,6 +100,39 @@ namespace OutpatientSystem
                 lbl_CurrentBalance.Text = balance.ToString();
                 txb_Money.Text = "";
             }
+        }
+
+        private void tbr_Money_Scroll(object sender, EventArgs e)
+        {
+            txb_Money.Text=tbr_Money.Value.ToString();
+        }
+
+        private void txb_Money_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            char result = e.KeyChar;
+            if (char.IsDigit(result) || result == 8)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txb_Money_TextChanged(object sender, EventArgs e)
+        {
+            if (txb_Money.Text == "")
+            {
+                txb_Money.Text = "0";
+            }
+            if (Convert.ToInt32(txb_Money.Text)>1000)
+            {
+                tbr_Money.Value = 1000;
+                return;
+            }
+            tbr_Money.Value = Convert.ToInt32(txb_Money.Text);
         }
     }
 }

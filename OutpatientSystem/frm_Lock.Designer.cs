@@ -30,13 +30,13 @@
         {
             this.btn_Confirm = new System.Windows.Forms.Button();
             this.gpb_Information = new System.Windows.Forms.GroupBox();
+            this.lbl_LandingPerson = new System.Windows.Forms.Label();
+            this.lbl_Tip = new System.Windows.Forms.Label();
+            this.lbl_Console = new System.Windows.Forms.Label();
+            this.lbl_LogIn = new System.Windows.Forms.Label();
             this.lbl_Password = new System.Windows.Forms.Label();
             this.txb_Password = new System.Windows.Forms.TextBox();
             this.btn_LogOut = new System.Windows.Forms.Button();
-            this.lbl_LogIn = new System.Windows.Forms.Label();
-            this.lbl_Console = new System.Windows.Forms.Label();
-            this.lbl_Tip = new System.Windows.Forms.Label();
-            this.lbl_LandingPerson = new System.Windows.Forms.Label();
             this.lbl_Verification = new System.Windows.Forms.Label();
             this.gpb_Information.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +68,45 @@
             this.gpb_Information.TabStop = false;
             this.gpb_Information.Text = "登陆信息";
             // 
+            // lbl_LandingPerson
+            // 
+            this.lbl_LandingPerson.AutoSize = true;
+            this.lbl_LandingPerson.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_LandingPerson.Location = new System.Drawing.Point(120, 43);
+            this.lbl_LandingPerson.Name = "lbl_LandingPerson";
+            this.lbl_LandingPerson.Size = new System.Drawing.Size(0, 24);
+            this.lbl_LandingPerson.TabIndex = 3;
+            // 
+            // lbl_Tip
+            // 
+            this.lbl_Tip.AutoSize = true;
+            this.lbl_Tip.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_Tip.Location = new System.Drawing.Point(19, 133);
+            this.lbl_Tip.Name = "lbl_Tip";
+            this.lbl_Tip.Size = new System.Drawing.Size(370, 48);
+            this.lbl_Tip.TabIndex = 2;
+            this.lbl_Tip.Text = "本工作台正在使用，且已被锁定。\r\n只能由本人解除锁定。";
+            // 
+            // lbl_Console
+            // 
+            this.lbl_Console.AutoSize = true;
+            this.lbl_Console.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_Console.Location = new System.Drawing.Point(23, 88);
+            this.lbl_Console.Name = "lbl_Console";
+            this.lbl_Console.Size = new System.Drawing.Size(274, 24);
+            this.lbl_Console.TabIndex = 1;
+            this.lbl_Console.Text = "工作台：医生门诊工作站";
+            // 
+            // lbl_LogIn
+            // 
+            this.lbl_LogIn.AutoSize = true;
+            this.lbl_LogIn.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_LogIn.Location = new System.Drawing.Point(23, 43);
+            this.lbl_LogIn.Name = "lbl_LogIn";
+            this.lbl_LogIn.Size = new System.Drawing.Size(106, 24);
+            this.lbl_LogIn.TabIndex = 0;
+            this.lbl_LogIn.Text = "登陆人：";
+            // 
             // lbl_Password
             // 
             this.lbl_Password.AutoSize = true;
@@ -98,45 +137,6 @@
             this.btn_LogOut.Text = "退出";
             this.btn_LogOut.UseVisualStyleBackColor = true;
             this.btn_LogOut.Click += new System.EventHandler(this.btn_LogOut_Click);
-            // 
-            // lbl_LogIn
-            // 
-            this.lbl_LogIn.AutoSize = true;
-            this.lbl_LogIn.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_LogIn.Location = new System.Drawing.Point(23, 43);
-            this.lbl_LogIn.Name = "lbl_LogIn";
-            this.lbl_LogIn.Size = new System.Drawing.Size(106, 24);
-            this.lbl_LogIn.TabIndex = 0;
-            this.lbl_LogIn.Text = "登陆人：";
-            // 
-            // lbl_Console
-            // 
-            this.lbl_Console.AutoSize = true;
-            this.lbl_Console.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_Console.Location = new System.Drawing.Point(23, 88);
-            this.lbl_Console.Name = "lbl_Console";
-            this.lbl_Console.Size = new System.Drawing.Size(274, 24);
-            this.lbl_Console.TabIndex = 1;
-            this.lbl_Console.Text = "工作台：医生门诊工作站";
-            // 
-            // lbl_Tip
-            // 
-            this.lbl_Tip.AutoSize = true;
-            this.lbl_Tip.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_Tip.Location = new System.Drawing.Point(19, 133);
-            this.lbl_Tip.Name = "lbl_Tip";
-            this.lbl_Tip.Size = new System.Drawing.Size(370, 48);
-            this.lbl_Tip.TabIndex = 2;
-            this.lbl_Tip.Text = "本工作台正在使用，且已被锁定。\r\n只能由本人解除锁定。";
-            // 
-            // lbl_LandingPerson
-            // 
-            this.lbl_LandingPerson.AutoSize = true;
-            this.lbl_LandingPerson.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_LandingPerson.Location = new System.Drawing.Point(120, 43);
-            this.lbl_LandingPerson.Name = "lbl_LandingPerson";
-            this.lbl_LandingPerson.Size = new System.Drawing.Size(0, 24);
-            this.lbl_LandingPerson.TabIndex = 3;
             // 
             // lbl_Verification
             // 
