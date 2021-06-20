@@ -216,4 +216,4 @@ SELECT O.OrderNo,O.UserID,U.Name,U.Gender,YEAR(GETDATE())-YEAR(U.Birthday) AS Ag
 SELECT O.OrderNo,I.Indication,D.Name,O.OrderTime,O.Noon FROM dbo.tb_Order AS O JOIN dbo.tb_Doctor AS D ON D.DoctorNo = O.DoctorNo JOIN dbo.tb_Indications AS I ON I.No=D.IndicationNo
 SELECT * FROM dbo.tb_Indications;
 SELECT * FROM dbo.tb_Diseases;
- 
+ UPDATE dbo.tb_Order SET DoctorNo='',OrderTime='',Noon='' WHERE OrderNo=''

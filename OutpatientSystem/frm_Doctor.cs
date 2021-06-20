@@ -15,7 +15,9 @@ namespace OutpatientSystem
 {
     public partial class frm_Doctor : Form
     {
-        string doctorNo, Name, IndicationNo;
+        int index, OrderNo;
+        string UserID;
+        string doctorNo, doctorName, IndicationNo, IndicationName;
         List<TreeNode> searchtreeNodes;
         public frm_Doctor()
         {
@@ -29,22 +31,47 @@ namespace OutpatientSystem
             sqlConnection.ConnectionString = "Server=(local);Database=HospitalBase;Integrated Security=sspi";
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = sqlConnection;
-            sqlCommand.CommandText = $@"SELECT * FROM dbo.tb_Doctor WHERE DoctorNo={doctorNo}";
+            SqlCommand sqlCommand1 = new SqlCommand();
+            sqlCommand1.Connection = sqlConnection;
+            sqlCommand.CommandText = $@"SELECT * FROM dbo.tb_Doctor WHERE DoctorNo={no}";
             sqlConnection.Open();
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
             if (sqlDataReader.Read())
             {
-                Name = sqlDataReader["Name"].ToString();
+                this.doctorName = sqlDataReader["Name"].ToString();
                 IndicationNo = sqlDataReader["IndicationNo"].ToString();
             }
+            sqlDataReader.Close();
+            sqlCommand.CommandText = $@"SELECT * FROM dbo.tb_Indications WHERE No={IndicationNo}";
+            SqlDataReader sqlDataReader1 = sqlCommand.ExecuteReader();
+            if (sqlDataReader1.Read())
+            {
+                IndicationName= sqlDataReader1["Indication"].ToString();
+            }
+
             sqlConnection.Close();
+            //刷新挂号数据
             refreshData();
-            
+            //刷新用户信息
             fillInformation();
-
+            //加载TreeView
             LoadTreeView();
+            //诊断表中插入一行自增列
+            //DataTable table = new DataTable();
+            //DataColumn columnNo = new DataColumn();
+            //DataColumn columnDisease = new DataColumn();
+            //columnNo.ColumnName = "序号";
+            //columnNo.AutoIncrement = true;
+            //columnNo.AutoIncrementSeed = 1;
+            //columnNo.AutoIncrementStep = 1;
+            //columnDisease.ColumnName = "病症";
+            //table.Columns.Add(columnNo);
+            //table.Columns.Add(columnDisease);
+            //dgv_Diagnosis.DataSource = table;
         }
-
+        /// <summary>
+        /// 刷新挂号数据
+        /// </summary>
         public void refreshData()
         {
             SqlConnection sqlConnection = new SqlConnection();
@@ -71,8 +98,17 @@ namespace OutpatientSystem
             dgv_Patient.Columns["DoctorNo"].Visible = false;
             dgv_Patient.Columns["Photo"].Visible = false;
             this.dgv_Patient.Columns[this.dgv_Patient.Columns.Count - 3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //自动选中第一行第一格
+            if (dgv_Patient.RowCount!=1)
+            {
+                dgv_Patient.CurrentCell = dgv_Patient.Rows[0].Cells[0];
+                dgv_Patient.Rows[0].Selected = true;
+                dgv_Patient.Rows[0].Cells[0].Selected = true;
+            }
         }
-
+        /// <summary>
+        /// 刷新用户信息
+        /// </summary>
         public void fillInformation()
         {
             if (dgv_Patient.CurrentRow==null)
@@ -83,6 +119,8 @@ namespace OutpatientSystem
             txb_Phone.Text= dgv_Patient.CurrentRow.Cells["Phone"].Value.ToString();
             txb_Age.Text = dgv_Patient.CurrentRow.Cells["Age"].Value.ToString()+"岁";
             txb_PatientName.Text= dgv_Patient.CurrentRow.Cells["Name"].Value.ToString();
+            OrderNo = Convert.ToInt32(dgv_Patient.CurrentRow.Cells["OrderNo"].Value);
+            UserID = dgv_Patient.CurrentRow.Cells["UserID"].Value.ToString();
             if (dgv_Patient.CurrentRow.Cells["Photo"].Value != DBNull.Value)
             {
                 byte[] photoBytes = (byte[])dgv_Patient.CurrentRow.Cells["Photo"].Value;
@@ -129,7 +167,7 @@ namespace OutpatientSystem
         private void 锁定ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Enabled = false;
-            frm_Lock frm_Lock = new frm_Lock(doctorNo, Name);
+            frm_Lock frm_Lock = new frm_Lock(doctorNo, doctorName);
             if (frm_Lock.ShowDialog() == DialogResult.OK)
             {
                 Enabled = true;
@@ -198,6 +236,117 @@ namespace OutpatientSystem
             }
         }
 
+        private void btn_ChangeNumber_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txb_tab1_Name.Text))
+            {
+                MessageBox.Show("还未选择患者！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            frm_ChangeNumber frm_ChangeNumber = new frm_ChangeNumber(IndicationName, doctorName, (DateTime)dgv_Patient.CurrentRow.Cells["OrderTime"].Value, dgv_Patient.CurrentRow.Cells["Noon"].Value.ToString(),
+                                                                        dgv_Patient.CurrentRow.Cells["UserID"].Value.ToString(), txb_tab1_Name.Text,txb_tab1_Gender.Text,txb_tab1_Age.Text, dgv_Patient.CurrentRow.Cells["OrderNo"].Value.ToString());
+            frm_ChangeNumber.FormClosed += Frm_ChangeNumber_FormClosed;
+            this.Hide();
+            frm_ChangeNumber.Show();
+        }
+
+        private void tvw_Diseases_DoubleClick(object sender, EventArgs e)
+        {
+            if(tvw_Diseases.SelectedNode.Level==0)
+            {
+                return;
+            }
+            //重新排序+判断是否重复
+            bool isRepeat = false;
+            for (index = 0; index < this.dgv_Diagnosis.Rows.Count-1; index++)
+            {
+                this.dgv_Diagnosis.Rows[index].Cells[0].Value = Convert.ToString(index + 1);
+                if (dgv_Diagnosis.Rows[index].Cells[1].Value.ToString() == tvw_Diseases.SelectedNode.Text)
+                {
+                    isRepeat = true;
+                }
+            }
+            if (isRepeat)
+            {
+                MessageBox.Show("已有重复诊断记录");
+                return;
+            }
+            index = this.dgv_Diagnosis.Rows.Add();
+            this.dgv_Diagnosis.Rows[index].Cells[0].Value = Convert.ToString(index+1); ;
+            this.dgv_Diagnosis.Rows[index].Cells[1].Value = $@"{tvw_Diseases.SelectedNode.Text}";
+        }
+
+        private void dgv_Diagnosis_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
+        {
+            for (index = 0; index < this.dgv_Diagnosis.Rows.Count; index++)
+            {
+                this.dgv_Diagnosis.Rows[index].Cells[0].Value = Convert.ToString(index + 1); ;
+            }
+        }
+
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            if (dgv_Diagnosis.RowCount==1)
+            {
+                MessageBox.Show("未诊断记录!", "删除失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            DialogResult dr = MessageBox.Show("确定要删除该诊断记录吗?", "删除记录", MessageBoxButtons.OKCancel);
+            if (dr==DialogResult.Cancel)
+            {
+                MessageBox.Show("已取消");
+                return;
+            }
+            if (dgv_Diagnosis.CurrentRow.Cells[0].Value == null) 
+            {
+                MessageBox.Show("该行为空！", "删除失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            dgv_Diagnosis.Rows.RemoveAt(dgv_Diagnosis.CurrentCell.RowIndex);
+            //重新排序
+            for (index = 0; index < this.dgv_Diagnosis.Rows.Count - 1; index++)
+            {
+                this.dgv_Diagnosis.Rows[index].Cells[0].Value = Convert.ToString(index + 1); ;
+            }
+
+        }
+
+        private void dgv_Patient_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            fillInformation();
+            txb_tab1_Name.Text = txb_PatientName.Text;
+            txb_tab1_Gender.Text = txb_Gender.Text;
+            txb_tab1_Age.Text = txb_Age.Text;
+        }
+
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+            if (dgv_Diagnosis.Rows.Count - 1==0)
+            {
+                MessageBox.Show("未诊断记录!", "保存失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            SqlConnection sqlConnection = new SqlConnection();
+            sqlConnection.ConnectionString = "Server=(local);Database=HospitalBase;Integrated Security=sspi";
+            sqlConnection.Open();
+            for (int i = 0; i < dgv_Diagnosis.Rows.Count-1; i++)
+            {
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.CommandText = $@" INSERT dbo.tb_Diagnosis (UserID,OrderNo,DiagnosisTime,DiseaseDiagnosis) VALUES ('{UserID}', '{OrderNo}', GETDATE(),'{dgv_Diagnosis.Rows[i].Cells[1].Value.ToString()}')";
+                sqlCommand.Connection = sqlConnection;
+                sqlCommand.ExecuteNonQuery();
+            }
+            sqlConnection.Close();
+            MessageBox.Show("保存成功！");
+            tabC_Diagnosis.SelectedTab = tabC_Diagnosis.TabPages[2];
+        }
+
+        private void Frm_ChangeNumber_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
+            refreshData();
+        }
+
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("确定要退出工作台吗？", "医生门诊工作站", MessageBoxButtons.YesNo);
@@ -207,7 +356,9 @@ namespace OutpatientSystem
             }
 
         }
-
+        /// <summary>
+        /// 加载TreeView
+        /// </summary>
         public void LoadTreeView()
         {
             SqlConnection sqlConnection = new SqlConnection();

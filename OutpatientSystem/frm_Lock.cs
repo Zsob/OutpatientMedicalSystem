@@ -29,6 +29,7 @@ namespace OutpatientSystem
 
         private void btn_Confirm_Click(object sender, EventArgs e)
         {
+
         }
 
         private void lbl_Verification_Click(object sender, EventArgs e)

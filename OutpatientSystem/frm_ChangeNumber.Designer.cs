@@ -40,16 +40,26 @@
             this.lbl_Name = new System.Windows.Forms.Label();
             this.lbl_Account = new System.Windows.Forms.Label();
             this.gbx_OldInformation = new System.Windows.Forms.GroupBox();
-            this.lbl_OldIndication = new System.Windows.Forms.Label();
-            this.lbl_OldDoctor = new System.Windows.Forms.Label();
-            this.lbl_OldDate = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.lbl_OldNoon = new System.Windows.Forms.Label();
-            this.cmb_Noon = new System.Windows.Forms.ComboBox();
-            this.cmb_OldIndication = new System.Windows.Forms.ComboBox();
             this.cmb_OldDoctor = new System.Windows.Forms.ComboBox();
+            this.cmb_OldIndication = new System.Windows.Forms.ComboBox();
+            this.cmb_OldNoon = new System.Windows.Forms.ComboBox();
+            this.lbl_OldNoon = new System.Windows.Forms.Label();
+            this.dtp_OldDate = new System.Windows.Forms.DateTimePicker();
+            this.lbl_OldDate = new System.Windows.Forms.Label();
+            this.lbl_OldDoctor = new System.Windows.Forms.Label();
+            this.lbl_OldIndication = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmb_Doctor = new System.Windows.Forms.ComboBox();
+            this.cmb_Indication = new System.Windows.Forms.ComboBox();
+            this.cmb_Noon = new System.Windows.Forms.ComboBox();
+            this.lbl_Noon = new System.Windows.Forms.Label();
+            this.dtp_Date = new System.Windows.Forms.DateTimePicker();
+            this.lbl_Date = new System.Windows.Forms.Label();
+            this.lbl_Doctor = new System.Windows.Forms.Label();
+            this.lbl_Indication = new System.Windows.Forms.Label();
             this.gbx_PatientInformation.SuspendLayout();
             this.gbx_OldInformation.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_Confirm
@@ -62,6 +72,7 @@
             this.btn_Confirm.TabIndex = 3;
             this.btn_Confirm.Text = "确定";
             this.btn_Confirm.UseVisualStyleBackColor = false;
+            this.btn_Confirm.Click += new System.EventHandler(this.btn_Confirm_Click);
             // 
             // btn_Exit
             // 
@@ -168,9 +179,9 @@
             // 
             this.gbx_OldInformation.Controls.Add(this.cmb_OldDoctor);
             this.gbx_OldInformation.Controls.Add(this.cmb_OldIndication);
-            this.gbx_OldInformation.Controls.Add(this.cmb_Noon);
+            this.gbx_OldInformation.Controls.Add(this.cmb_OldNoon);
             this.gbx_OldInformation.Controls.Add(this.lbl_OldNoon);
-            this.gbx_OldInformation.Controls.Add(this.dateTimePicker1);
+            this.gbx_OldInformation.Controls.Add(this.dtp_OldDate);
             this.gbx_OldInformation.Controls.Add(this.lbl_OldDate);
             this.gbx_OldInformation.Controls.Add(this.lbl_OldDoctor);
             this.gbx_OldInformation.Controls.Add(this.lbl_OldIndication);
@@ -182,44 +193,35 @@
             this.gbx_OldInformation.TabStop = false;
             this.gbx_OldInformation.Text = "原挂号信息";
             // 
-            // lbl_OldIndication
+            // cmb_OldDoctor
             // 
-            this.lbl_OldIndication.AutoSize = true;
-            this.lbl_OldIndication.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_OldIndication.Location = new System.Drawing.Point(37, 48);
-            this.lbl_OldIndication.Name = "lbl_OldIndication";
-            this.lbl_OldIndication.Size = new System.Drawing.Size(62, 25);
-            this.lbl_OldIndication.TabIndex = 0;
-            this.lbl_OldIndication.Text = "科室";
+            this.cmb_OldDoctor.Enabled = false;
+            this.cmb_OldDoctor.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmb_OldDoctor.FormattingEnabled = true;
+            this.cmb_OldDoctor.Location = new System.Drawing.Point(446, 46);
+            this.cmb_OldDoctor.Name = "cmb_OldDoctor";
+            this.cmb_OldDoctor.Size = new System.Drawing.Size(197, 31);
+            this.cmb_OldDoctor.TabIndex = 10;
             // 
-            // lbl_OldDoctor
+            // cmb_OldIndication
             // 
-            this.lbl_OldDoctor.AutoSize = true;
-            this.lbl_OldDoctor.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_OldDoctor.Location = new System.Drawing.Point(378, 48);
-            this.lbl_OldDoctor.Name = "lbl_OldDoctor";
-            this.lbl_OldDoctor.Size = new System.Drawing.Size(62, 25);
-            this.lbl_OldDoctor.TabIndex = 3;
-            this.lbl_OldDoctor.Text = "医师";
+            this.cmb_OldIndication.Enabled = false;
+            this.cmb_OldIndication.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmb_OldIndication.FormattingEnabled = true;
+            this.cmb_OldIndication.Location = new System.Drawing.Point(105, 46);
+            this.cmb_OldIndication.Name = "cmb_OldIndication";
+            this.cmb_OldIndication.Size = new System.Drawing.Size(197, 31);
+            this.cmb_OldIndication.TabIndex = 9;
             // 
-            // lbl_OldDate
+            // cmb_OldNoon
             // 
-            this.lbl_OldDate.AutoSize = true;
-            this.lbl_OldDate.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_OldDate.Location = new System.Drawing.Point(37, 133);
-            this.lbl_OldDate.Name = "lbl_OldDate";
-            this.lbl_OldDate.Size = new System.Drawing.Size(62, 25);
-            this.lbl_OldDate.TabIndex = 5;
-            this.lbl_OldDate.Text = "日期";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(102, 130);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 34);
-            this.dateTimePicker1.TabIndex = 6;
+            this.cmb_OldNoon.Enabled = false;
+            this.cmb_OldNoon.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmb_OldNoon.FormattingEnabled = true;
+            this.cmb_OldNoon.Location = new System.Drawing.Point(446, 133);
+            this.cmb_OldNoon.Name = "cmb_OldNoon";
+            this.cmb_OldNoon.Size = new System.Drawing.Size(197, 31);
+            this.cmb_OldNoon.TabIndex = 8;
             // 
             // lbl_OldNoon
             // 
@@ -231,9 +233,83 @@
             this.lbl_OldNoon.TabIndex = 7;
             this.lbl_OldNoon.Text = "午别";
             // 
+            // dtp_OldDate
+            // 
+            this.dtp_OldDate.Enabled = false;
+            this.dtp_OldDate.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dtp_OldDate.Location = new System.Drawing.Point(102, 130);
+            this.dtp_OldDate.Name = "dtp_OldDate";
+            this.dtp_OldDate.Size = new System.Drawing.Size(200, 34);
+            this.dtp_OldDate.TabIndex = 6;
+            // 
+            // lbl_OldDate
+            // 
+            this.lbl_OldDate.AutoSize = true;
+            this.lbl_OldDate.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_OldDate.Location = new System.Drawing.Point(37, 133);
+            this.lbl_OldDate.Name = "lbl_OldDate";
+            this.lbl_OldDate.Size = new System.Drawing.Size(62, 25);
+            this.lbl_OldDate.TabIndex = 5;
+            this.lbl_OldDate.Text = "日期";
+            // 
+            // lbl_OldDoctor
+            // 
+            this.lbl_OldDoctor.AutoSize = true;
+            this.lbl_OldDoctor.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_OldDoctor.Location = new System.Drawing.Point(378, 48);
+            this.lbl_OldDoctor.Name = "lbl_OldDoctor";
+            this.lbl_OldDoctor.Size = new System.Drawing.Size(62, 25);
+            this.lbl_OldDoctor.TabIndex = 3;
+            this.lbl_OldDoctor.Text = "医师";
+            // 
+            // lbl_OldIndication
+            // 
+            this.lbl_OldIndication.AutoSize = true;
+            this.lbl_OldIndication.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_OldIndication.Location = new System.Drawing.Point(37, 48);
+            this.lbl_OldIndication.Name = "lbl_OldIndication";
+            this.lbl_OldIndication.Size = new System.Drawing.Size(62, 25);
+            this.lbl_OldIndication.TabIndex = 0;
+            this.lbl_OldIndication.Text = "科室";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmb_Doctor);
+            this.groupBox1.Controls.Add(this.cmb_Indication);
+            this.groupBox1.Controls.Add(this.cmb_Noon);
+            this.groupBox1.Controls.Add(this.lbl_Noon);
+            this.groupBox1.Controls.Add(this.dtp_Date);
+            this.groupBox1.Controls.Add(this.lbl_Date);
+            this.groupBox1.Controls.Add(this.lbl_Doctor);
+            this.groupBox1.Controls.Add(this.lbl_Indication);
+            this.groupBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 445);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(698, 208);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "现挂号信息";
+            // 
+            // cmb_Doctor
+            // 
+            this.cmb_Doctor.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmb_Doctor.Location = new System.Drawing.Point(446, 46);
+            this.cmb_Doctor.Name = "cmb_Doctor";
+            this.cmb_Doctor.Size = new System.Drawing.Size(197, 31);
+            this.cmb_Doctor.TabIndex = 10;
+            // 
+            // cmb_Indication
+            // 
+            this.cmb_Indication.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmb_Indication.FormattingEnabled = true;
+            this.cmb_Indication.Location = new System.Drawing.Point(105, 46);
+            this.cmb_Indication.Name = "cmb_Indication";
+            this.cmb_Indication.Size = new System.Drawing.Size(197, 31);
+            this.cmb_Indication.TabIndex = 9;
+            this.cmb_Indication.SelectedIndexChanged += new System.EventHandler(this.cmb_Indication_SelectedIndexChanged);
+            // 
             // cmb_Noon
             // 
-            this.cmb_Noon.Enabled = false;
             this.cmb_Noon.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmb_Noon.FormattingEnabled = true;
             this.cmb_Noon.Items.AddRange(new object[] {
@@ -244,37 +320,60 @@
             this.cmb_Noon.Size = new System.Drawing.Size(197, 31);
             this.cmb_Noon.TabIndex = 8;
             // 
-            // cmb_OldIndication
+            // lbl_Noon
             // 
-            this.cmb_OldIndication.Enabled = false;
-            this.cmb_OldIndication.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmb_OldIndication.FormattingEnabled = true;
-            this.cmb_OldIndication.Items.AddRange(new object[] {
-            "上午",
-            "下午"});
-            this.cmb_OldIndication.Location = new System.Drawing.Point(105, 46);
-            this.cmb_OldIndication.Name = "cmb_OldIndication";
-            this.cmb_OldIndication.Size = new System.Drawing.Size(197, 31);
-            this.cmb_OldIndication.TabIndex = 9;
+            this.lbl_Noon.AutoSize = true;
+            this.lbl_Noon.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_Noon.Location = new System.Drawing.Point(378, 133);
+            this.lbl_Noon.Name = "lbl_Noon";
+            this.lbl_Noon.Size = new System.Drawing.Size(62, 25);
+            this.lbl_Noon.TabIndex = 7;
+            this.lbl_Noon.Text = "午别";
             // 
-            // cmb_OldDoctor
+            // dtp_Date
             // 
-            this.cmb_OldDoctor.Enabled = false;
-            this.cmb_OldDoctor.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmb_OldDoctor.FormattingEnabled = true;
-            this.cmb_OldDoctor.Items.AddRange(new object[] {
-            "上午",
-            "下午"});
-            this.cmb_OldDoctor.Location = new System.Drawing.Point(446, 46);
-            this.cmb_OldDoctor.Name = "cmb_OldDoctor";
-            this.cmb_OldDoctor.Size = new System.Drawing.Size(197, 31);
-            this.cmb_OldDoctor.TabIndex = 10;
+            this.dtp_Date.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dtp_Date.Location = new System.Drawing.Point(102, 130);
+            this.dtp_Date.Name = "dtp_Date";
+            this.dtp_Date.Size = new System.Drawing.Size(200, 34);
+            this.dtp_Date.TabIndex = 6;
+            // 
+            // lbl_Date
+            // 
+            this.lbl_Date.AutoSize = true;
+            this.lbl_Date.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_Date.Location = new System.Drawing.Point(37, 133);
+            this.lbl_Date.Name = "lbl_Date";
+            this.lbl_Date.Size = new System.Drawing.Size(62, 25);
+            this.lbl_Date.TabIndex = 5;
+            this.lbl_Date.Text = "日期";
+            // 
+            // lbl_Doctor
+            // 
+            this.lbl_Doctor.AutoSize = true;
+            this.lbl_Doctor.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_Doctor.Location = new System.Drawing.Point(378, 48);
+            this.lbl_Doctor.Name = "lbl_Doctor";
+            this.lbl_Doctor.Size = new System.Drawing.Size(62, 25);
+            this.lbl_Doctor.TabIndex = 3;
+            this.lbl_Doctor.Text = "医师";
+            // 
+            // lbl_Indication
+            // 
+            this.lbl_Indication.AutoSize = true;
+            this.lbl_Indication.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_Indication.Location = new System.Drawing.Point(37, 48);
+            this.lbl_Indication.Name = "lbl_Indication";
+            this.lbl_Indication.Size = new System.Drawing.Size(62, 25);
+            this.lbl_Indication.TabIndex = 0;
+            this.lbl_Indication.Text = "科室";
             // 
             // frm_ChangeNumber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 637);
+            this.ClientSize = new System.Drawing.Size(731, 693);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbx_OldInformation);
             this.Controls.Add(this.gbx_PatientInformation);
             this.Controls.Add(this.btn_Exit);
@@ -285,6 +384,8 @@
             this.gbx_PatientInformation.PerformLayout();
             this.gbx_OldInformation.ResumeLayout(false);
             this.gbx_OldInformation.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -305,11 +406,20 @@
         private System.Windows.Forms.GroupBox gbx_OldInformation;
         private System.Windows.Forms.Label lbl_OldIndication;
         private System.Windows.Forms.Label lbl_OldDoctor;
-        private System.Windows.Forms.ComboBox cmb_Noon;
+        private System.Windows.Forms.ComboBox cmb_OldNoon;
         private System.Windows.Forms.Label lbl_OldNoon;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtp_OldDate;
         private System.Windows.Forms.Label lbl_OldDate;
         private System.Windows.Forms.ComboBox cmb_OldDoctor;
         private System.Windows.Forms.ComboBox cmb_OldIndication;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cmb_Doctor;
+        private System.Windows.Forms.ComboBox cmb_Indication;
+        private System.Windows.Forms.ComboBox cmb_Noon;
+        private System.Windows.Forms.Label lbl_Noon;
+        private System.Windows.Forms.DateTimePicker dtp_Date;
+        private System.Windows.Forms.Label lbl_Date;
+        private System.Windows.Forms.Label lbl_Doctor;
+        private System.Windows.Forms.Label lbl_Indication;
     }
 }

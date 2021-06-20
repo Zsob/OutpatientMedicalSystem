@@ -253,6 +253,7 @@
             // 
             // tbr_Money
             // 
+            this.tbr_Money.LargeChange = 100;
             this.tbr_Money.Location = new System.Drawing.Point(61, 253);
             this.tbr_Money.Maximum = 1000;
             this.tbr_Money.Name = "tbr_Money";
