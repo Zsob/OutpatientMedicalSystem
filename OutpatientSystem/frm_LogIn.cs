@@ -28,15 +28,16 @@ namespace OutpatientSystem
 
         private void btn_LogIn_Click(object sender, EventArgs e)
         {
+            errorProvider.Clear();
             if (this.txb_No.Text.Trim() == "")
             {
-                MessageBox.Show("用户号不能为空！");
+                errorProvider.SetError(txb_No, "用户号不能为空");
                 this.txb_No.Focus();
                 return;
             }
             if (this.txb_Password.Text.Trim() == "")
             {
-                MessageBox.Show("密码不能为空！");
+                errorProvider.SetError(txb_Password, "密码不能为空");
                 this.txb_Password.Focus();
                 return;
             }

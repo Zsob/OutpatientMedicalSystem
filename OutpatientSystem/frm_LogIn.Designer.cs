@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btn_User = new System.Windows.Forms.Button();
             this.btn_Docter = new System.Windows.Forms.Button();
             this.gpb_User = new System.Windows.Forms.GroupBox();
@@ -43,8 +44,10 @@
             this.txb_DoctorID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.gpb_User.SuspendLayout();
             this.gpb_Docter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_User
@@ -124,7 +127,7 @@
             this.txb_No.Name = "txb_No";
             this.txb_No.Size = new System.Drawing.Size(176, 28);
             this.txb_No.TabIndex = 8;
-            this.txb_No.Text = "350103200103271518";
+            this.txb_No.Text = "3190707011";
             // 
             // lbl_Password
             // 
@@ -153,7 +156,7 @@
             this.gpb_Docter.Controls.Add(this.txb_DoctorID);
             this.gpb_Docter.Controls.Add(this.label1);
             this.gpb_Docter.Controls.Add(this.label2);
-            this.gpb_Docter.Location = new System.Drawing.Point(564, 73);
+            this.gpb_Docter.Location = new System.Drawing.Point(36, 73);
             this.gpb_Docter.Name = "gpb_Docter";
             this.gpb_Docter.Size = new System.Drawing.Size(409, 483);
             this.gpb_Docter.TabIndex = 12;
@@ -212,12 +215,16 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "账号：";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frm_LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1080, 616);
+            this.ClientSize = new System.Drawing.Size(496, 616);
             this.Controls.Add(this.gpb_Docter);
             this.Controls.Add(this.gpb_User);
             this.Controls.Add(this.btn_Docter);
@@ -228,6 +235,7 @@
             this.gpb_User.PerformLayout();
             this.gpb_Docter.ResumeLayout(false);
             this.gpb_Docter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -249,5 +257,6 @@
         private System.Windows.Forms.TextBox txb_DoctorID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

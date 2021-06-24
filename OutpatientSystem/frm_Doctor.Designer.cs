@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mns_Doctor = new System.Windows.Forms.MenuStrip();
             this.锁定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.锁定ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +49,9 @@
             this.txb_PatientName = new System.Windows.Forms.TextBox();
             this.lbl_PatientName = new System.Windows.Forms.Label();
             this.tabP_Diagnosis = new System.Windows.Forms.TabPage();
+            this.btn_tab1_Save = new System.Windows.Forms.Button();
+            this.btn_tab1_Delete = new System.Windows.Forms.Button();
+            this.btn_tab1_Insert = new System.Windows.Forms.Button();
             this.gpb_Information = new System.Windows.Forms.GroupBox();
             this.txb_tab1_Age = new System.Windows.Forms.TextBox();
             this.lbl_tab1_Age = new System.Windows.Forms.Label();
@@ -63,6 +67,19 @@
             this.txb_Search = new System.Windows.Forms.TextBox();
             this.tvw_Diseases = new System.Windows.Forms.TreeView();
             this.tabP_DoctorsOrder = new System.Windows.Forms.TabPage();
+            this.btn_tab2_Delete = new System.Windows.Forms.Button();
+            this.btn_tab2_Insert = new System.Windows.Forms.Button();
+            this.btn_tab2_Save = new System.Windows.Forms.Button();
+            this.lbl_DoctorOrder = new System.Windows.Forms.Label();
+            this.dgv_DoctorOrder = new System.Windows.Forms.DataGridView();
+            this.Column_MedicalName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_DrugDosage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Pack = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_Frequency = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_FrequencyDAY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txb_Pinyin = new System.Windows.Forms.TextBox();
+            this.lbl_Pinyin = new System.Windows.Forms.Label();
+            this.dgv_Medicines = new System.Windows.Forms.DataGridView();
             this.btn_Fresh = new System.Windows.Forms.Button();
             this.btn_ChangeNumber = new System.Windows.Forms.Button();
             this.btn_Admission = new System.Windows.Forms.Button();
@@ -71,9 +88,7 @@
             this.btn_EndOfVisit = new System.Windows.Forms.Button();
             this.btn_Appointment = new System.Windows.Forms.Button();
             this.btn_Exit = new System.Windows.Forms.Button();
-            this.btn_Insert = new System.Windows.Forms.Button();
-            this.btn_Delete = new System.Windows.Forms.Button();
-            this.btn_Save = new System.Windows.Forms.Button();
+            this.btn_tab1_Clear = new System.Windows.Forms.Button();
             this.mns_Doctor.SuspendLayout();
             this.tabC_Diagnosis.SuspendLayout();
             this.tabP_PatientList.SuspendLayout();
@@ -84,6 +99,9 @@
             this.gpb_Information.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Diagnosis)).BeginInit();
             this.gpb_DiagnosticDictionary.SuspendLayout();
+            this.tabP_DoctorsOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DoctorOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Medicines)).BeginInit();
             this.SuspendLayout();
             // 
             // mns_Doctor
@@ -279,9 +297,10 @@
             // 
             // tabP_Diagnosis
             // 
-            this.tabP_Diagnosis.Controls.Add(this.btn_Save);
-            this.tabP_Diagnosis.Controls.Add(this.btn_Delete);
-            this.tabP_Diagnosis.Controls.Add(this.btn_Insert);
+            this.tabP_Diagnosis.Controls.Add(this.btn_tab1_Clear);
+            this.tabP_Diagnosis.Controls.Add(this.btn_tab1_Save);
+            this.tabP_Diagnosis.Controls.Add(this.btn_tab1_Delete);
+            this.tabP_Diagnosis.Controls.Add(this.btn_tab1_Insert);
             this.tabP_Diagnosis.Controls.Add(this.gpb_Information);
             this.tabP_Diagnosis.Controls.Add(this.dgv_Diagnosis);
             this.tabP_Diagnosis.Controls.Add(this.gpb_DiagnosticDictionary);
@@ -291,6 +310,45 @@
             this.tabP_Diagnosis.TabIndex = 1;
             this.tabP_Diagnosis.Text = "诊断";
             this.tabP_Diagnosis.UseVisualStyleBackColor = true;
+            // 
+            // btn_tab1_Save
+            // 
+            this.btn_tab1_Save.BackColor = System.Drawing.Color.White;
+            this.btn_tab1_Save.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_tab1_Save.Location = new System.Drawing.Point(981, 464);
+            this.btn_tab1_Save.Name = "btn_tab1_Save";
+            this.btn_tab1_Save.Size = new System.Drawing.Size(99, 49);
+            this.btn_tab1_Save.TabIndex = 12;
+            this.btn_tab1_Save.TabStop = false;
+            this.btn_tab1_Save.Text = "保存";
+            this.btn_tab1_Save.UseVisualStyleBackColor = false;
+            this.btn_tab1_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
+            // btn_tab1_Delete
+            // 
+            this.btn_tab1_Delete.BackColor = System.Drawing.Color.White;
+            this.btn_tab1_Delete.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_tab1_Delete.Location = new System.Drawing.Point(981, 160);
+            this.btn_tab1_Delete.Name = "btn_tab1_Delete";
+            this.btn_tab1_Delete.Size = new System.Drawing.Size(99, 49);
+            this.btn_tab1_Delete.TabIndex = 11;
+            this.btn_tab1_Delete.TabStop = false;
+            this.btn_tab1_Delete.Text = "删除";
+            this.btn_tab1_Delete.UseVisualStyleBackColor = false;
+            this.btn_tab1_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
+            // 
+            // btn_tab1_Insert
+            // 
+            this.btn_tab1_Insert.BackColor = System.Drawing.Color.White;
+            this.btn_tab1_Insert.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_tab1_Insert.Location = new System.Drawing.Point(981, 105);
+            this.btn_tab1_Insert.Name = "btn_tab1_Insert";
+            this.btn_tab1_Insert.Size = new System.Drawing.Size(99, 49);
+            this.btn_tab1_Insert.TabIndex = 10;
+            this.btn_tab1_Insert.TabStop = false;
+            this.btn_tab1_Insert.Text = "插入";
+            this.btn_tab1_Insert.UseVisualStyleBackColor = false;
+            this.btn_tab1_Insert.Click += new System.EventHandler(this.tvw_Diseases_DoubleClick);
             // 
             // gpb_Information
             // 
@@ -428,12 +486,163 @@
             // 
             // tabP_DoctorsOrder
             // 
+            this.tabP_DoctorsOrder.Controls.Add(this.btn_tab2_Delete);
+            this.tabP_DoctorsOrder.Controls.Add(this.btn_tab2_Insert);
+            this.tabP_DoctorsOrder.Controls.Add(this.btn_tab2_Save);
+            this.tabP_DoctorsOrder.Controls.Add(this.lbl_DoctorOrder);
+            this.tabP_DoctorsOrder.Controls.Add(this.dgv_DoctorOrder);
+            this.tabP_DoctorsOrder.Controls.Add(this.txb_Pinyin);
+            this.tabP_DoctorsOrder.Controls.Add(this.lbl_Pinyin);
+            this.tabP_DoctorsOrder.Controls.Add(this.dgv_Medicines);
             this.tabP_DoctorsOrder.Location = new System.Drawing.Point(4, 30);
             this.tabP_DoctorsOrder.Name = "tabP_DoctorsOrder";
             this.tabP_DoctorsOrder.Size = new System.Drawing.Size(1083, 536);
             this.tabP_DoctorsOrder.TabIndex = 2;
             this.tabP_DoctorsOrder.Text = "医嘱";
             this.tabP_DoctorsOrder.UseVisualStyleBackColor = true;
+            // 
+            // btn_tab2_Delete
+            // 
+            this.btn_tab2_Delete.BackColor = System.Drawing.Color.White;
+            this.btn_tab2_Delete.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_tab2_Delete.Location = new System.Drawing.Point(981, 160);
+            this.btn_tab2_Delete.Name = "btn_tab2_Delete";
+            this.btn_tab2_Delete.Size = new System.Drawing.Size(99, 49);
+            this.btn_tab2_Delete.TabIndex = 15;
+            this.btn_tab2_Delete.TabStop = false;
+            this.btn_tab2_Delete.Text = "删除";
+            this.btn_tab2_Delete.UseVisualStyleBackColor = false;
+            this.btn_tab2_Delete.Click += new System.EventHandler(this.btn_tab2_Delete_Click);
+            // 
+            // btn_tab2_Insert
+            // 
+            this.btn_tab2_Insert.BackColor = System.Drawing.Color.White;
+            this.btn_tab2_Insert.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_tab2_Insert.Location = new System.Drawing.Point(981, 105);
+            this.btn_tab2_Insert.Name = "btn_tab2_Insert";
+            this.btn_tab2_Insert.Size = new System.Drawing.Size(99, 49);
+            this.btn_tab2_Insert.TabIndex = 14;
+            this.btn_tab2_Insert.TabStop = false;
+            this.btn_tab2_Insert.Text = "插入";
+            this.btn_tab2_Insert.UseVisualStyleBackColor = false;
+            this.btn_tab2_Insert.Click += new System.EventHandler(this.btn_tab2_Insert_Click);
+            // 
+            // btn_tab2_Save
+            // 
+            this.btn_tab2_Save.BackColor = System.Drawing.Color.White;
+            this.btn_tab2_Save.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_tab2_Save.Location = new System.Drawing.Point(981, 484);
+            this.btn_tab2_Save.Name = "btn_tab2_Save";
+            this.btn_tab2_Save.Size = new System.Drawing.Size(99, 49);
+            this.btn_tab2_Save.TabIndex = 13;
+            this.btn_tab2_Save.TabStop = false;
+            this.btn_tab2_Save.Text = "保存";
+            this.btn_tab2_Save.UseVisualStyleBackColor = false;
+            this.btn_tab2_Save.Click += new System.EventHandler(this.btn_SaveOrder_Click);
+            // 
+            // lbl_DoctorOrder
+            // 
+            this.lbl_DoctorOrder.AutoSize = true;
+            this.lbl_DoctorOrder.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_DoctorOrder.Location = new System.Drawing.Point(384, 7);
+            this.lbl_DoctorOrder.Name = "lbl_DoctorOrder";
+            this.lbl_DoctorOrder.Size = new System.Drawing.Size(62, 25);
+            this.lbl_DoctorOrder.TabIndex = 10;
+            this.lbl_DoctorOrder.Text = "医嘱";
+            // 
+            // dgv_DoctorOrder
+            // 
+            this.dgv_DoctorOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgv_DoctorOrder.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dgv_DoctorOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DoctorOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column_MedicalName,
+            this.Column_DrugDosage,
+            this.Column_Pack,
+            this.Column_Frequency,
+            this.Column_FrequencyDAY});
+            this.dgv_DoctorOrder.Location = new System.Drawing.Point(389, 43);
+            this.dgv_DoctorOrder.Name = "dgv_DoctorOrder";
+            this.dgv_DoctorOrder.RowTemplate.Height = 27;
+            this.dgv_DoctorOrder.Size = new System.Drawing.Size(590, 493);
+            this.dgv_DoctorOrder.TabIndex = 9;
+            this.dgv_DoctorOrder.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DoctorOrder_CellEndEdit);
+            // 
+            // Column_MedicalName
+            // 
+            this.Column_MedicalName.HeaderText = "药品名称";
+            this.Column_MedicalName.Name = "Column_MedicalName";
+            this.Column_MedicalName.ReadOnly = true;
+            this.Column_MedicalName.Width = 118;
+            // 
+            // Column_DrugDosage
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column_DrugDosage.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column_DrugDosage.HeaderText = "药品数量";
+            this.Column_DrugDosage.Name = "Column_DrugDosage";
+            this.Column_DrugDosage.Width = 118;
+            // 
+            // Column_Pack
+            // 
+            this.Column_Pack.HeaderText = "包装";
+            this.Column_Pack.Items.AddRange(new object[] {
+            "瓶",
+            "支",
+            "盒",
+            "袋",
+            "片"});
+            this.Column_Pack.Name = "Column_Pack";
+            this.Column_Pack.Width = 55;
+            // 
+            // Column_Frequency
+            // 
+            this.Column_Frequency.HeaderText = "频次";
+            this.Column_Frequency.Items.AddRange(new object[] {
+            "每天",
+            "每周"});
+            this.Column_Frequency.Name = "Column_Frequency";
+            this.Column_Frequency.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_Frequency.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column_Frequency.Width = 78;
+            // 
+            // Column_FrequencyDAY
+            // 
+            this.Column_FrequencyDAY.HeaderText = "日/周";
+            this.Column_FrequencyDAY.Name = "Column_FrequencyDAY";
+            this.Column_FrequencyDAY.Width = 88;
+            // 
+            // txb_Pinyin
+            // 
+            this.txb_Pinyin.Location = new System.Drawing.Point(76, 7);
+            this.txb_Pinyin.Name = "txb_Pinyin";
+            this.txb_Pinyin.Size = new System.Drawing.Size(130, 30);
+            this.txb_Pinyin.TabIndex = 8;
+            this.txb_Pinyin.TextChanged += new System.EventHandler(this.txb_Pinyin_TextChanged);
+            // 
+            // lbl_Pinyin
+            // 
+            this.lbl_Pinyin.AutoSize = true;
+            this.lbl_Pinyin.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_Pinyin.Location = new System.Drawing.Point(8, 12);
+            this.lbl_Pinyin.Name = "lbl_Pinyin";
+            this.lbl_Pinyin.Size = new System.Drawing.Size(62, 25);
+            this.lbl_Pinyin.TabIndex = 1;
+            this.lbl_Pinyin.Text = "拼音";
+            // 
+            // dgv_Medicines
+            // 
+            this.dgv_Medicines.AllowUserToAddRows = false;
+            this.dgv_Medicines.AllowUserToDeleteRows = false;
+            this.dgv_Medicines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgv_Medicines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Medicines.Location = new System.Drawing.Point(3, 43);
+            this.dgv_Medicines.Name = "dgv_Medicines";
+            this.dgv_Medicines.ReadOnly = true;
+            this.dgv_Medicines.RowTemplate.Height = 27;
+            this.dgv_Medicines.Size = new System.Drawing.Size(354, 490);
+            this.dgv_Medicines.TabIndex = 0;
+            this.dgv_Medicines.DoubleClick += new System.EventHandler(this.btn_tab2_Insert_Click);
             // 
             // btn_Fresh
             // 
@@ -526,41 +735,18 @@
             this.btn_Exit.UseVisualStyleBackColor = false;
             this.btn_Exit.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
-            // btn_Insert
+            // btn_tab1_Clear
             // 
-            this.btn_Insert.BackColor = System.Drawing.Color.White;
-            this.btn_Insert.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Insert.Location = new System.Drawing.Point(975, 105);
-            this.btn_Insert.Name = "btn_Insert";
-            this.btn_Insert.Size = new System.Drawing.Size(99, 49);
-            this.btn_Insert.TabIndex = 10;
-            this.btn_Insert.Text = "插入";
-            this.btn_Insert.UseVisualStyleBackColor = false;
-            this.btn_Insert.Click += new System.EventHandler(this.tvw_Diseases_DoubleClick);
-            // 
-            // btn_Delete
-            // 
-            this.btn_Delete.BackColor = System.Drawing.Color.White;
-            this.btn_Delete.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Delete.Location = new System.Drawing.Point(975, 160);
-            this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(99, 49);
-            this.btn_Delete.TabIndex = 11;
-            this.btn_Delete.Text = "删除";
-            this.btn_Delete.UseVisualStyleBackColor = false;
-            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
-            // 
-            // btn_Save
-            // 
-            this.btn_Save.BackColor = System.Drawing.Color.White;
-            this.btn_Save.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Save.Location = new System.Drawing.Point(976, 464);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(99, 49);
-            this.btn_Save.TabIndex = 12;
-            this.btn_Save.Text = "保存";
-            this.btn_Save.UseVisualStyleBackColor = false;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            this.btn_tab1_Clear.BackColor = System.Drawing.Color.White;
+            this.btn_tab1_Clear.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_tab1_Clear.Location = new System.Drawing.Point(981, 215);
+            this.btn_tab1_Clear.Name = "btn_tab1_Clear";
+            this.btn_tab1_Clear.Size = new System.Drawing.Size(99, 49);
+            this.btn_tab1_Clear.TabIndex = 13;
+            this.btn_tab1_Clear.TabStop = false;
+            this.btn_tab1_Clear.Text = "清空";
+            this.btn_tab1_Clear.UseVisualStyleBackColor = false;
+            this.btn_tab1_Clear.Click += new System.EventHandler(this.btn_tab1_Clear_Click);
             // 
             // frm_Doctor
             // 
@@ -594,6 +780,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Diagnosis)).EndInit();
             this.gpb_DiagnosticDictionary.ResumeLayout(false);
             this.gpb_DiagnosticDictionary.PerformLayout();
+            this.tabP_DoctorsOrder.ResumeLayout(false);
+            this.tabP_DoctorsOrder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DoctorOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Medicines)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -644,8 +834,22 @@
         private System.Windows.Forms.Label lbl_tab1_Gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_No;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Disease;
-        private System.Windows.Forms.Button btn_Delete;
-        private System.Windows.Forms.Button btn_Insert;
-        private System.Windows.Forms.Button btn_Save;
+        private System.Windows.Forms.Button btn_tab1_Delete;
+        private System.Windows.Forms.Button btn_tab1_Insert;
+        private System.Windows.Forms.Button btn_tab1_Save;
+        private System.Windows.Forms.DataGridView dgv_Medicines;
+        private System.Windows.Forms.TextBox txb_Pinyin;
+        private System.Windows.Forms.Label lbl_Pinyin;
+        private System.Windows.Forms.Label lbl_DoctorOrder;
+        private System.Windows.Forms.DataGridView dgv_DoctorOrder;
+        private System.Windows.Forms.Button btn_tab2_Save;
+        private System.Windows.Forms.Button btn_tab2_Insert;
+        private System.Windows.Forms.Button btn_tab2_Delete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_MedicalName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_DrugDosage;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column_Pack;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column_Frequency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_FrequencyDAY;
+        private System.Windows.Forms.Button btn_tab1_Clear;
     }
 }

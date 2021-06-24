@@ -6,7 +6,8 @@ IF DB_ID('HospitalBase') IS NOT NULL
 			WITH ROLLBACK IMMEDIATE;
 		DROP DATABASE HospitalBase;
 	END
-Go
+GO
+
 CREATE DATABASE HospitalBase		
 	ON	
 		(NAME='DataFile'
@@ -15,6 +16,7 @@ CREATE DATABASE HospitalBase
 		(NAME='LogFile_1'
 		,FILENAME='D:\杂物\门诊医药管理系统OutpatientMedicalSystem\HospitalBase\LogFile.ldf');
 
+USE HospitalBase;
 CREATE TABLE tb_User(
     ID
 		VARCHAR(18)
@@ -54,7 +56,7 @@ INSERT dbo.tb_User
 	Birthday
 )
 VALUES
-(   '350103200103271518',   -- ID - char(18)
+(   '3190707011',   -- ID - char(18)
     HASHBYTES('MD5','11'), -- Password - varbinary(128)
     '曾极涵',   -- Name - varchar(10)
     '男',   -- Gender - char(2)
@@ -209,6 +211,25 @@ VALUES
 ( '耳石症',2 ),
 ( '睡眠打鼾',2 )
 
+CREATE TABLE tb_Diagnosis
+(
+	DiagnosisNo
+		INT
+		IDENTITY
+		PRIMARY KEY,
+	UserID
+		VARCHAR(18)
+		NOT NULL,
+	OrderNo
+		INT
+		NOT NULL,
+	DiagnosisTime
+		DATETIME
+		NOT NULL,
+	DiseaseDiagnosis
+		VARCHAR(MAX)
+		NOT NULL
+)
 
 
 SELECT *FROM dbo.tb_Order
@@ -217,3 +238,5 @@ SELECT O.OrderNo,I.Indication,D.Name,O.OrderTime,O.Noon FROM dbo.tb_Order AS O J
 SELECT * FROM dbo.tb_Indications;
 SELECT * FROM dbo.tb_Diseases;
  UPDATE dbo.tb_Order SET DoctorNo='',OrderTime='',Noon='' WHERE OrderNo=''
+ INSERT dbo.tb_Diagnosis (UserID,OrderNo,DiagnosisTime,DiseaseDiagnosis) VALUES ('', 0, GETDATE(),'')
+ SELECT * FROM dbo.tb_Medicines

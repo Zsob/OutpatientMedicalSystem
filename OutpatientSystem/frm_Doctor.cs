@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
+using System.Threading;
 
 namespace OutpatientSystem
 {
@@ -19,6 +20,7 @@ namespace OutpatientSystem
         string UserID;
         string doctorNo, doctorName, IndicationNo, IndicationName;
         List<TreeNode> searchtreeNodes;
+        private DataTable MedicineTable;
         public frm_Doctor()
         {
             InitializeComponent();
@@ -56,6 +58,12 @@ namespace OutpatientSystem
             fillInformation();
             //加载TreeView
             LoadTreeView();
+            //刷新药物表
+            refreshMedicineTable();
+            dgv_DoctorOrder.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgv_DoctorOrder.Columns[4].HeaderText = "日" + "\r\n" + " /周";
+            //LoadDoctorOrder();
+            //dgv_DoctorOrder.DataError += Dgv_DoctorOrder_DataError;
             //诊断表中插入一行自增列
             //DataTable table = new DataTable();
             //DataColumn columnNo = new DataColumn();
@@ -69,6 +77,11 @@ namespace OutpatientSystem
             //table.Columns.Add(columnDisease);
             //dgv_Diagnosis.DataSource = table;
         }
+
+        private void Dgv_DoctorOrder_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+        }
+
         /// <summary>
         /// 刷新挂号数据
         /// </summary>
@@ -106,6 +119,60 @@ namespace OutpatientSystem
                 dgv_Patient.Rows[0].Cells[0].Selected = true;
             }
         }
+
+        /// <summary>
+        /// 载入医嘱表
+        /// </summary>
+        public void LoadDoctorOrder()
+        {
+            Thread t = new Thread((ThreadStart)(() =>
+            {
+                DataTable tablePack = new DataTable();
+                tablePack.Columns.Add("No", typeof(int));
+                tablePack.Columns.Add("Name");
+                tablePack.Rows.Add("1", "支");
+                tablePack.Rows.Add("2", "盒");
+                tablePack.Rows.Add("3", "袋");
+                tablePack.Rows.Add("4", "剂");
+                DataGridViewComboBoxColumn comboPack = new DataGridViewComboBoxColumn();
+                comboPack.Name = "spaceType";
+                comboPack.DataSource = tablePack;
+                comboPack.DisplayMember = "Name";
+                comboPack.ValueMember = "No";
+                comboPack.HeaderText = "单位";
+                dgv_DoctorOrder.Columns.Add(comboPack);
+            }
+            ));
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+            t.Join();
+        }
+        /// <summary>
+        /// 刷新药物表
+        /// </summary>
+        public void refreshMedicineTable()
+        {
+            SqlConnection sqlConnection = new SqlConnection();
+            sqlConnection.ConnectionString = "Server=(local);Database=HospitalBase;Integrated Security=sspi";
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = sqlConnection;
+            sqlCommand.CommandText = "SELECT * FROM tb_Medicines; ";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlDataAdapter.MissingSchemaAction = MissingSchemaAction.AddWithKey;
+            this.MedicineTable = new DataTable();
+            sqlConnection.Open();
+            sqlDataAdapter.Fill(MedicineTable);
+            sqlConnection.Close();
+            dgv_Medicines.DataSource = MedicineTable;
+            dgv_Medicines.Columns["MedicalName"].HeaderText = "药物名称";
+            dgv_Medicines.Columns["Stock"].HeaderText = "库存";
+            dgv_Medicines.Columns["MedicalNo"].Visible = false;
+            dgv_Medicines.Columns["Price"].Visible = false;
+            dgv_Medicines.Columns["Pinyin"].Visible = false;
+            dgv_Medicines.Columns["Stock"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
         /// <summary>
         /// 刷新用户信息
         /// </summary>
@@ -252,7 +319,7 @@ namespace OutpatientSystem
 
         private void tvw_Diseases_DoubleClick(object sender, EventArgs e)
         {
-            if(tvw_Diseases.SelectedNode.Level==0)
+            if(tvw_Diseases.SelectedNode == null||tvw_Diseases.SelectedNode.Level==0)
             {
                 return;
             }
@@ -292,15 +359,16 @@ namespace OutpatientSystem
                 MessageBox.Show("未诊断记录!", "删除失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (dgv_Diagnosis.CurrentRow.Cells[0].Value == null)
+            {
+                MessageBox.Show("该行为空！", "删除失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             DialogResult dr = MessageBox.Show("确定要删除该诊断记录吗?", "删除记录", MessageBoxButtons.OKCancel);
             if (dr==DialogResult.Cancel)
             {
                 MessageBox.Show("已取消");
                 return;
-            }
-            if (dgv_Diagnosis.CurrentRow.Cells[0].Value == null) 
-            {
-                MessageBox.Show("该行为空！", "删除失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             dgv_Diagnosis.Rows.RemoveAt(dgv_Diagnosis.CurrentCell.RowIndex);
             //重新排序
@@ -317,6 +385,100 @@ namespace OutpatientSystem
             txb_tab1_Name.Text = txb_PatientName.Text;
             txb_tab1_Gender.Text = txb_Gender.Text;
             txb_tab1_Age.Text = txb_Age.Text;
+        }
+
+        private void txb_Pinyin_TextChanged(object sender, EventArgs e)
+        {
+            DataRow[] searchResultRows =
+                this.MedicineTable.Select($"Pinyin LIKE '%{this.txb_Pinyin.Text.Trim()}%'");
+            DataTable searchResultTable = this.MedicineTable.Clone();
+            foreach (DataRow row in searchResultRows)
+            {
+                searchResultTable.ImportRow(row);
+            }
+            this.dgv_Medicines.DataSource = searchResultTable;
+        }
+
+        private void btn_SaveOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgv_DoctorOrder_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv_DoctorOrder.CurrentRow.Cells[4].Value!=null)
+            {
+                string str = dgv_DoctorOrder.CurrentRow.Cells[4].Value.ToString();
+                if (str.Substring(str.Length - 1, 1) != "次")
+                {
+                    dgv_DoctorOrder.CurrentRow.Cells[4].Value = str + "次";
+                }
+            }
+        }
+
+        private void btn_tab2_Insert_Click(object sender, EventArgs e)
+        {
+            index = dgv_DoctorOrder.Rows.Count - 2;
+            if (dgv_DoctorOrder.CurrentRow != null)
+            {
+                if (dgv_DoctorOrder.Rows[index].Cells[0].Value == null || dgv_DoctorOrder.Rows[index].Cells[1].Value == null || dgv_DoctorOrder.Rows[index].Cells[2].Value == null || dgv_DoctorOrder.Rows[index].Cells[3].Value == null || dgv_DoctorOrder.Rows[index].Cells[4].Value == null)
+                {
+                    MessageBox.Show($@"未完成当前行的开药记录");
+                    dgv_DoctorOrder.Rows[index].Selected = true;
+                    return;
+                }
+            }
+            bool isRepeat = false;
+            for (index = 0; index < this.dgv_DoctorOrder.Rows.Count - 1; index++)
+            {
+                if (dgv_DoctorOrder.Rows[index].Cells[0].Value.ToString() == dgv_Medicines.CurrentRow.Cells["MedicalName"].Value.ToString())
+                {
+                    isRepeat = true;
+                    break;
+                }
+            }
+            if (isRepeat)
+            {
+                MessageBox.Show("已有重复药品");
+                return;
+            }
+            index = this.dgv_DoctorOrder.Rows.Add();
+            this.dgv_DoctorOrder.Rows[index].Cells[0].Value = $@"{dgv_Medicines.CurrentRow.Cells["MedicalName"].Value.ToString()}";
+            dgv_DoctorOrder.Rows[index].Selected = true;
+
+        }
+
+        private void btn_tab2_Delete_Click(object sender, EventArgs e)
+        {
+            if (dgv_DoctorOrder.RowCount == 1)
+            {
+                MessageBox.Show("未诊断记录!", "删除失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (dgv_DoctorOrder.CurrentRow.Cells[0].Value == null)
+            {
+                MessageBox.Show("该行为空！", "删除失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            DialogResult dr = MessageBox.Show("确定要删除该诊断记录吗?", "删除记录", MessageBoxButtons.OKCancel);
+            if (dr == DialogResult.Cancel)
+            {
+                MessageBox.Show("已取消");
+                return;
+            }
+            dgv_DoctorOrder.Rows.RemoveAt(dgv_DoctorOrder.CurrentCell.RowIndex);
+
+        }
+
+        private void btn_tab1_Clear_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("是否清空所有诊断记录?", "清空记录", MessageBoxButtons.OKCancel);
+            if (dr == DialogResult.Cancel)
+            {
+                MessageBox.Show("已取消");
+                return;
+            }
+            dgv_Diagnosis.Rows.Clear();
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
