@@ -49,6 +49,7 @@
             this.txb_PatientName = new System.Windows.Forms.TextBox();
             this.lbl_PatientName = new System.Windows.Forms.Label();
             this.tabP_Diagnosis = new System.Windows.Forms.TabPage();
+            this.btn_tab1_Clear = new System.Windows.Forms.Button();
             this.btn_tab1_Save = new System.Windows.Forms.Button();
             this.btn_tab1_Delete = new System.Windows.Forms.Button();
             this.btn_tab1_Insert = new System.Windows.Forms.Button();
@@ -72,11 +73,6 @@
             this.btn_tab2_Save = new System.Windows.Forms.Button();
             this.lbl_DoctorOrder = new System.Windows.Forms.Label();
             this.dgv_DoctorOrder = new System.Windows.Forms.DataGridView();
-            this.Column_MedicalName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_DrugDosage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Pack = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column_Frequency = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column_FrequencyDAY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txb_Pinyin = new System.Windows.Forms.TextBox();
             this.lbl_Pinyin = new System.Windows.Forms.Label();
             this.dgv_Medicines = new System.Windows.Forms.DataGridView();
@@ -88,7 +84,12 @@
             this.btn_EndOfVisit = new System.Windows.Forms.Button();
             this.btn_Appointment = new System.Windows.Forms.Button();
             this.btn_Exit = new System.Windows.Forms.Button();
-            this.btn_tab1_Clear = new System.Windows.Forms.Button();
+            this.btn_tab2_Clear = new System.Windows.Forms.Button();
+            this.Column_MedicalName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_DrugDosage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Frequency = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_FrequencyDAY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_EveryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mns_Doctor.SuspendLayout();
             this.tabC_Diagnosis.SuspendLayout();
             this.tabP_PatientList.SuspendLayout();
@@ -311,6 +312,19 @@
             this.tabP_Diagnosis.Text = "诊断";
             this.tabP_Diagnosis.UseVisualStyleBackColor = true;
             // 
+            // btn_tab1_Clear
+            // 
+            this.btn_tab1_Clear.BackColor = System.Drawing.Color.White;
+            this.btn_tab1_Clear.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_tab1_Clear.Location = new System.Drawing.Point(981, 215);
+            this.btn_tab1_Clear.Name = "btn_tab1_Clear";
+            this.btn_tab1_Clear.Size = new System.Drawing.Size(99, 49);
+            this.btn_tab1_Clear.TabIndex = 13;
+            this.btn_tab1_Clear.TabStop = false;
+            this.btn_tab1_Clear.Text = "清空";
+            this.btn_tab1_Clear.UseVisualStyleBackColor = false;
+            this.btn_tab1_Clear.Click += new System.EventHandler(this.btn_tab1_Clear_Click);
+            // 
             // btn_tab1_Save
             // 
             this.btn_tab1_Save.BackColor = System.Drawing.Color.White;
@@ -426,7 +440,7 @@
             this.dgv_Diagnosis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_No,
             this.Column_Disease});
-            this.dgv_Diagnosis.Location = new System.Drawing.Point(355, 95);
+            this.dgv_Diagnosis.Location = new System.Drawing.Point(361, 95);
             this.dgv_Diagnosis.Name = "dgv_Diagnosis";
             this.dgv_Diagnosis.ReadOnly = true;
             this.dgv_Diagnosis.RowTemplate.Height = 27;
@@ -486,6 +500,7 @@
             // 
             // tabP_DoctorsOrder
             // 
+            this.tabP_DoctorsOrder.Controls.Add(this.btn_tab2_Clear);
             this.tabP_DoctorsOrder.Controls.Add(this.btn_tab2_Delete);
             this.tabP_DoctorsOrder.Controls.Add(this.btn_tab2_Insert);
             this.tabP_DoctorsOrder.Controls.Add(this.btn_tab2_Save);
@@ -558,59 +573,15 @@
             this.dgv_DoctorOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_MedicalName,
             this.Column_DrugDosage,
-            this.Column_Pack,
             this.Column_Frequency,
-            this.Column_FrequencyDAY});
+            this.Column_FrequencyDAY,
+            this.Column_EveryTime});
             this.dgv_DoctorOrder.Location = new System.Drawing.Point(389, 43);
             this.dgv_DoctorOrder.Name = "dgv_DoctorOrder";
             this.dgv_DoctorOrder.RowTemplate.Height = 27;
             this.dgv_DoctorOrder.Size = new System.Drawing.Size(590, 493);
             this.dgv_DoctorOrder.TabIndex = 9;
             this.dgv_DoctorOrder.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DoctorOrder_CellEndEdit);
-            // 
-            // Column_MedicalName
-            // 
-            this.Column_MedicalName.HeaderText = "药品名称";
-            this.Column_MedicalName.Name = "Column_MedicalName";
-            this.Column_MedicalName.ReadOnly = true;
-            this.Column_MedicalName.Width = 118;
-            // 
-            // Column_DrugDosage
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Column_DrugDosage.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Column_DrugDosage.HeaderText = "药品数量";
-            this.Column_DrugDosage.Name = "Column_DrugDosage";
-            this.Column_DrugDosage.Width = 118;
-            // 
-            // Column_Pack
-            // 
-            this.Column_Pack.HeaderText = "包装";
-            this.Column_Pack.Items.AddRange(new object[] {
-            "瓶",
-            "支",
-            "盒",
-            "袋",
-            "片"});
-            this.Column_Pack.Name = "Column_Pack";
-            this.Column_Pack.Width = 55;
-            // 
-            // Column_Frequency
-            // 
-            this.Column_Frequency.HeaderText = "频次";
-            this.Column_Frequency.Items.AddRange(new object[] {
-            "每天",
-            "每周"});
-            this.Column_Frequency.Name = "Column_Frequency";
-            this.Column_Frequency.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column_Frequency.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column_Frequency.Width = 78;
-            // 
-            // Column_FrequencyDAY
-            // 
-            this.Column_FrequencyDAY.HeaderText = "日/周";
-            this.Column_FrequencyDAY.Name = "Column_FrequencyDAY";
-            this.Column_FrequencyDAY.Width = 88;
             // 
             // txb_Pinyin
             // 
@@ -735,18 +706,58 @@
             this.btn_Exit.UseVisualStyleBackColor = false;
             this.btn_Exit.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
-            // btn_tab1_Clear
+            // btn_tab2_Clear
             // 
-            this.btn_tab1_Clear.BackColor = System.Drawing.Color.White;
-            this.btn_tab1_Clear.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_tab1_Clear.Location = new System.Drawing.Point(981, 215);
-            this.btn_tab1_Clear.Name = "btn_tab1_Clear";
-            this.btn_tab1_Clear.Size = new System.Drawing.Size(99, 49);
-            this.btn_tab1_Clear.TabIndex = 13;
-            this.btn_tab1_Clear.TabStop = false;
-            this.btn_tab1_Clear.Text = "清空";
-            this.btn_tab1_Clear.UseVisualStyleBackColor = false;
-            this.btn_tab1_Clear.Click += new System.EventHandler(this.btn_tab1_Clear_Click);
+            this.btn_tab2_Clear.BackColor = System.Drawing.Color.White;
+            this.btn_tab2_Clear.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_tab2_Clear.Location = new System.Drawing.Point(981, 215);
+            this.btn_tab2_Clear.Name = "btn_tab2_Clear";
+            this.btn_tab2_Clear.Size = new System.Drawing.Size(99, 49);
+            this.btn_tab2_Clear.TabIndex = 16;
+            this.btn_tab2_Clear.TabStop = false;
+            this.btn_tab2_Clear.Text = "清空";
+            this.btn_tab2_Clear.UseVisualStyleBackColor = false;
+            this.btn_tab2_Clear.Click += new System.EventHandler(this.btn_tab2_Clear_Click);
+            // 
+            // Column_MedicalName
+            // 
+            this.Column_MedicalName.HeaderText = "药品名称";
+            this.Column_MedicalName.Name = "Column_MedicalName";
+            this.Column_MedicalName.ReadOnly = true;
+            this.Column_MedicalName.Width = 118;
+            // 
+            // Column_DrugDosage
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column_DrugDosage.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column_DrugDosage.HeaderText = "药品数量";
+            this.Column_DrugDosage.Name = "Column_DrugDosage";
+            this.Column_DrugDosage.Width = 118;
+            // 
+            // Column_Frequency
+            // 
+            this.Column_Frequency.HeaderText = "频次";
+            this.Column_Frequency.Items.AddRange(new object[] {
+            "每天",
+            "每周"});
+            this.Column_Frequency.Name = "Column_Frequency";
+            this.Column_Frequency.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_Frequency.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column_Frequency.Width = 78;
+            // 
+            // Column_FrequencyDAY
+            // 
+            this.Column_FrequencyDAY.HeaderText = "日/周";
+            this.Column_FrequencyDAY.Name = "Column_FrequencyDAY";
+            this.Column_FrequencyDAY.Width = 88;
+            // 
+            // Column_EveryTime
+            // 
+            this.Column_EveryTime.HeaderText = "每次";
+            this.Column_EveryTime.Name = "Column_EveryTime";
+            this.Column_EveryTime.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_EveryTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column_EveryTime.Width = 55;
             // 
             // frm_Doctor
             // 
@@ -845,11 +856,12 @@
         private System.Windows.Forms.Button btn_tab2_Save;
         private System.Windows.Forms.Button btn_tab2_Insert;
         private System.Windows.Forms.Button btn_tab2_Delete;
+        private System.Windows.Forms.Button btn_tab1_Clear;
+        private System.Windows.Forms.Button btn_tab2_Clear;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_MedicalName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_DrugDosage;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Column_Pack;
         private System.Windows.Forms.DataGridViewComboBoxColumn Column_Frequency;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_FrequencyDAY;
-        private System.Windows.Forms.Button btn_tab1_Clear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_EveryTime;
     }
 }

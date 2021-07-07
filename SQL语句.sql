@@ -231,9 +231,41 @@ CREATE TABLE tb_Diagnosis
 		NOT NULL
 )
 
+CREATE TABLE tb_DoctorOrder
+(
+	DoctorOrderNo
+		INT
+		IDENTITY
+		PRIMARY KEY,
+	OrderNo
+		INT
+		NOT NULL,
+	DoctorNo
+		VARCHAR(10)
+		NOT NULL,
+	UserID
+		VARCHAR(18)
+		NOT NULL,
+	MedicalName
+		VARCHAR(50)
+		NOT NULL,
+	MedicineNumber
+		INT
+		NOT NULL,
+	DrugFrequency
+		VARCHAR(MAX)
+		NOT NULL,
+	DrugUsage
+		VARCHAR(max)
+		NOT NULL
+	)
 
+INSERT dbo.tb_DoctorOrder ( OrderNo,DoctorNo,UserID,MedicalName,MedicineNumber,DrugFrequency,DrugUsage) VALUES( 0,'','','', 0,'','')
+UPDATE dbo.tb_Order SET OrderStatus='1' WHERE OrderNo='';
+SELECT * FROM dbo.tb_Order
+SELECT * FROM dbo.tb_DoctorOrder
 SELECT *FROM dbo.tb_Order
-SELECT O.OrderNo,O.UserID,U.Name,U.Gender,YEAR(GETDATE())-YEAR(U.Birthday) AS Age,U.Phone,O.OrderTime,O.Noon,O.DoctorNo,U.Photo FROM dbo.tb_Order AS O JOIN dbo.tb_User AS U ON O.UserID=U.ID WHERE O.DoctorNo='1' ORDER BY O.Noon ASC
+SELECT O.OrderNo,O.UserID,U.Name,U.Gender,YEAR(GETDATE())-YEAR(U.Birthday) AS Age,U.Phone,O.OrderTime,O.Noon,O.DoctorNo,U.Photo FROM dbo.tb_Order AS O JOIN dbo.tb_User AS U ON O.UserID=U.ID WHERE O.DoctorNo='1' AND O.OrderStatus='0' ORDER BY O.Noon ASC
 SELECT O.OrderNo,I.Indication,D.Name,O.OrderTime,O.Noon FROM dbo.tb_Order AS O JOIN dbo.tb_Doctor AS D ON D.DoctorNo = O.DoctorNo JOIN dbo.tb_Indications AS I ON I.No=D.IndicationNo
 SELECT * FROM dbo.tb_Indications;
 SELECT * FROM dbo.tb_Diseases;
