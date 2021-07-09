@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbl_ID = new System.Windows.Forms.Label();
             this.lbl_Password = new System.Windows.Forms.Label();
             this.lbl_Gender = new System.Windows.Forms.Label();
@@ -42,17 +43,19 @@
             this.btn_Submit = new System.Windows.Forms.Button();
             this.lbl_Birthday = new System.Windows.Forms.Label();
             this.dtp_Birthday = new System.Windows.Forms.DateTimePicker();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_ID
             // 
             this.lbl_ID.AutoSize = true;
             this.lbl_ID.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_ID.Location = new System.Drawing.Point(73, 46);
+            this.lbl_ID.Location = new System.Drawing.Point(113, 46);
             this.lbl_ID.Name = "lbl_ID";
-            this.lbl_ID.Size = new System.Drawing.Size(109, 20);
+            this.lbl_ID.Size = new System.Drawing.Size(69, 20);
             this.lbl_ID.TabIndex = 0;
-            this.lbl_ID.Text = "身份证号：";
+            this.lbl_ID.Text = "账号：";
             // 
             // lbl_Password
             // 
@@ -181,6 +184,10 @@
             this.dtp_Birthday.TabIndex = 14;
             this.dtp_Birthday.Value = new System.DateTime(2021, 4, 23, 0, 0, 0, 0);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frm_SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -202,6 +209,7 @@
             this.Controls.Add(this.lbl_ID);
             this.Name = "frm_SignUp";
             this.Text = "注册";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,5 +231,6 @@
         private System.Windows.Forms.Button btn_Submit;
         private System.Windows.Forms.Label lbl_Birthday;
         private System.Windows.Forms.DateTimePicker dtp_Birthday;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

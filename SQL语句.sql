@@ -257,7 +257,10 @@ CREATE TABLE tb_DoctorOrder
 		NOT NULL,
 	DrugUsage
 		VARCHAR(max)
-		NOT NULL
+		NOT NULL,
+	Stage
+		INT
+		DEFAULT(0)
 	)
 
 INSERT dbo.tb_DoctorOrder ( OrderNo,DoctorNo,UserID,MedicalName,MedicineNumber,DrugFrequency,DrugUsage) VALUES( 0,'','','', 0,'','')
@@ -272,3 +275,6 @@ SELECT * FROM dbo.tb_Diseases;
  UPDATE dbo.tb_Order SET DoctorNo='',OrderTime='',Noon='' WHERE OrderNo=''
  INSERT dbo.tb_Diagnosis (UserID,OrderNo,DiagnosisTime,DiseaseDiagnosis) VALUES ('', 0, GETDATE(),'')
  SELECT * FROM dbo.tb_Medicines
+ SELECT * FROM dbo.tb_Diagnosis
+ SELECT * FROM dbo.tb_DoctorOrder
+ SELECT D.MedicalName,DrugFrequency,DrugUsage,MedicineNumber,M.Price,D.MedicineNumber*M.Price AS S,D.Stage FROM dbo.tb_DoctorOrder AS D JOIN dbo.tb_Medicines AS M ON M.MedicalName = D.MedicalName WHERE D.UserID='3190707011' AND D.Stage='0'

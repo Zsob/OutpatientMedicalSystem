@@ -23,32 +23,39 @@ namespace OutpatientSystem
 
         private void btn_Submit_Click(object sender, EventArgs e)
         {
+            errorProvider.Clear();
             if (this.txb_ID.Text.Trim() == "")                                                      
             {
-                MessageBox.Show("身份证不能为空！");														
+                MessageBox.Show("账号不能为空！");
+                errorProvider.SetError(txb_ID, "账号不能为空");
                 this.txb_ID.Focus();                                                                
                 return;                                                                                 
             }
             if (this.txb_Password.Text.Trim() == "")                                                   
             {
-                MessageBox.Show("密码不能为空！");														
+                MessageBox.Show("密码不能为空！");
+                errorProvider.SetError(txb_Password, "密码不能为空");
                 this.txb_Password.Focus();                                                             
                 return;                                                                                 
             }
             if (txb_Name.Text.Trim() == "")
             {
                 MessageBox.Show("姓名不能为空！");
+                errorProvider.SetError(txb_Name, "姓名不能为空");
                 this.txb_Name.Focus();
                 return;
             }
             if (rdb_Female.Checked == false && rdb_Male.Checked == false)
             {
                 MessageBox.Show("性别还未选择！");
+                errorProvider.SetError(rdb_Female, "性别还未选择");
+                errorProvider.SetError(rdb_Male, "性别还未选择");
                 return;
             }
             if (txb_Phone.Text.Trim()=="")
             {
                 MessageBox.Show("电话不能为空！");
+                errorProvider.SetError(txb_Phone, "电话不能为空");
                 this.txb_Phone.Focus();
                 return;
             }

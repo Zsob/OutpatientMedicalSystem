@@ -117,7 +117,6 @@
             this.txb_Password.PasswordChar = '☠';
             this.txb_Password.Size = new System.Drawing.Size(176, 28);
             this.txb_Password.TabIndex = 9;
-            this.txb_Password.Text = "11";
             this.txb_Password.UseSystemPasswordChar = true;
             // 
             // txb_No
@@ -127,7 +126,6 @@
             this.txb_No.Name = "txb_No";
             this.txb_No.Size = new System.Drawing.Size(176, 28);
             this.txb_No.TabIndex = 8;
-            this.txb_No.Text = "3190707011";
             // 
             // lbl_Password
             // 
@@ -183,7 +181,6 @@
             this.txb_DoctorPassword.PasswordChar = '*';
             this.txb_DoctorPassword.Size = new System.Drawing.Size(176, 28);
             this.txb_DoctorPassword.TabIndex = 9;
-            this.txb_DoctorPassword.Text = "1";
             this.txb_DoctorPassword.UseSystemPasswordChar = true;
             // 
             // txb_DoctorID
@@ -193,7 +190,6 @@
             this.txb_DoctorID.Name = "txb_DoctorID";
             this.txb_DoctorID.Size = new System.Drawing.Size(176, 28);
             this.txb_DoctorID.TabIndex = 8;
-            this.txb_DoctorID.Text = "1";
             // 
             // label1
             // 
@@ -224,7 +220,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(496, 616);
+            this.ClientSize = new System.Drawing.Size(497, 616);
             this.Controls.Add(this.gpb_Docter);
             this.Controls.Add(this.gpb_User);
             this.Controls.Add(this.btn_Docter);

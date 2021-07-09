@@ -114,6 +114,8 @@
             // 
             // dgv_Appointment
             // 
+            this.dgv_Appointment.AllowUserToAddRows = false;
+            this.dgv_Appointment.AllowUserToDeleteRows = false;
             this.dgv_Appointment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_Appointment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Appointment.Location = new System.Drawing.Point(0, 345);
