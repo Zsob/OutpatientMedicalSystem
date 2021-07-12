@@ -11,10 +11,10 @@ GO
 CREATE DATABASE HospitalBase		
 	ON	
 		(NAME='DataFile'
-		,FILENAME='D:\杂物\门诊医药管理系统OutpatientMedicalSystem\HospitalBase\DataFile.mdf')
+		,FILENAME='D:\杂物\门诊医生系统OutpatientMedicalSystem\HospitalBase\DataFile.mdf')
 	LOG ON	
 		(NAME='LogFile_1'
-		,FILENAME='D:\杂物\门诊医药管理系统OutpatientMedicalSystem\HospitalBase\LogFile.ldf');
+		,FILENAME='D:\杂物\门诊医生系统OutpatientMedicalSystem\HospitalBase\LogFile.ldf');
 
 USE HospitalBase;
 CREATE TABLE tb_User(
